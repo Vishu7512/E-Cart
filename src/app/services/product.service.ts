@@ -29,12 +29,12 @@ export class ProductService {
       product
     );
   }
-  popularProducts() {
-    return this.http.get<product[]>('http://localhost:3000/products?_limit=3');
-  }
+  // popularProducts() {
+  //   return this.http.get<product[]>('http://localhost:3000/products?_limit=3');
+  // }
 
   trendyProducts() {
-    return this.http.get<product[]>('http://localhost:3000/products?_limit=8');
+    return this.http.get<product[]>('http://localhost:3000/products?_limit=20');
   }
 
   searchProduct(query: string) {

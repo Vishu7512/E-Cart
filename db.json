@@ -46,7 +46,7 @@
   "products": [
     {
       "name": "java Book",
-      "price": "550",
+      "price": "567",
       "category": "book",
       "description": "this is best reference book ",
       "image": "https://rukminim2.flixcart.com/image/416/416/xif0q/book/j/t/s/programming-with-java-original-imagvkwpmphmpzyx.jpeg?q=70&crop=false",
@@ -83,14 +83,6 @@
       "description": "Confirmable jeans for man ",
       "image": "https://cdn.pixabay.com/photo/2017/09/29/15/45/woman-2799490_1280.jpg",
       "id": "5"
-    },
-    {
-      "name": "Truck",
-      "price": "Toy",
-      "category": "Toys",
-      "description": "A toy for 5 year old child",
-      "image": "https://cdn.shopify.com/s/files/1/0011/8367/8476/products/Truck2_1400x.png?v=1662789388",
-      "id": "6"
     },
     {
       "name": "Noise Smart Watch",

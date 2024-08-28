@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router'; // Import Router
 import { cart, product } from '../data-type';
 import { ProductService } from '../services/product.service';
+import jsPDF from 'jspdf';
 
 @Component({
   selector: 'app-product-details',
@@ -9,95 +10,134 @@ import { ProductService } from '../services/product.service';
   styleUrls: ['./product-details.component.css']
 })
 export class ProductDetailsComponent implements OnInit {
-  productData:undefined | product;
-  productQuantity:number=1;
-  removeCart=false;
-  cartData:product|undefined;
-  constructor(private activeRoute:ActivatedRoute, private product:ProductService) { }
+  productData: undefined | product;
+  productQuantity: number = 1;
+  removeCart = false;
+  cartData: product | undefined;
+
+  constructor(
+    private activeRoute: ActivatedRoute,
+    private product: ProductService,
+    private router: Router  // Inject Router
+  ) { }
 
   ngOnInit(): void {
-    let productId= this.activeRoute.snapshot.paramMap.get('productId');
+    let productId = this.activeRoute.snapshot.paramMap.get('productId');
     console.warn(productId);
-    productId && this.product.getProduct(productId).subscribe((result)=>{
-      this.productData= result;
-      let cartData= localStorage.getItem('localCart');
-      if(productId && cartData){
+    productId && this.product.getProduct(productId).subscribe((result) => {
+      this.productData = result;
+
+      let cartData = localStorage.getItem('localCart');
+      if (productId && cartData) {
         let items = JSON.parse(cartData);
-        items = items.filter((item:product)=>productId=== item.id.toString());
-        if(items.length){
-          this.removeCart=true
-        }else{
-          this.removeCart=false
+        items = items.filter((item: product) => productId === item.id.toString());
+        if (items.length) {
+          this.removeCart = true;
+        } else {
+          this.removeCart = false;
         }
       }
 
       let user = localStorage.getItem('user');
-      if(user){
-        let userId= user && JSON.parse(user).id;
+      if (user) {
+        let userId = user && JSON.parse(user).id;
         this.product.getCartList(userId);
 
-        this.product.cartData.subscribe((result)=>{
-          let item = result.filter((item:product)=>productId?.toString()===item.productId?.toString())
-       if(item.length){
-        this.cartData=item[0];
-        this.removeCart=true;
-       }
-        })
-      }
-      
-      
-      
-    })
-    
-  }
-  handleQuantity(val:string){
-    if(this.productQuantity<20 && val==='plus'){
-      this.productQuantity+=1;
-    }else if(this.productQuantity>1 && val==='min'){
-      this.productQuantity-=1;
-    }
-  }
-
-  addToCart(){
-    if(this.productData){
-      this.productData.quantity = this.productQuantity;
-      if(!localStorage.getItem('user')){
-        this.product.localAddToCart(this.productData);
-        this.removeCart=true
-      }else{
-        let user = localStorage.getItem('user');
-        let userId= user && JSON.parse(user).id;
-        let cartData:cart={
-          ...this.productData,
-          productId:this.productData.id,
-          userId
-        }
-        delete cartData.id;
-        this.product.addToCart(cartData).subscribe((result)=>{
-          if(result){
-           this.product.getCartList(userId);
-           this.removeCart=true
+        this.product.cartData.subscribe((result) => {
+          let item = result.filter((item: product) => productId?.toString() === item.productId?.toString());
+          if (item.length) {
+            this.cartData = item[0];
+            this.removeCart = true;
           }
-        })        
+        });
       }
-      
-    } 
+    });
   }
-  removeToCart(productId:number){
-    if(!localStorage.getItem('user')){
-this.product.removeItemFromCart(productId)
-    }else{
-      console.warn("cartData", this.cartData);
-      
-      this.cartData && this.product.removeToCart(this.cartData.id)
-      .subscribe((result)=>{
-        let user = localStorage.getItem('user');
-        let userId= user && JSON.parse(user).id;
-        this.product.getCartList(userId)
-      })
+
+  // New method to check if the user is logged in
+  isUserLoggedIn(): boolean {
+    return !!localStorage.getItem('user');
+  }
+
+  handleQuantity(val: string) {
+    if (this.productQuantity < 20 && val === 'plus') {
+      this.productQuantity += 1;
+    } else if (this.productQuantity > 1 && val === 'min') {
+      this.productQuantity -= 1;
     }
-    this.removeCart=false
   }
 
+  addToCart() {
+    if (this.productData) {
+      this.productData.quantity = this.productQuantity;
+      if (!localStorage.getItem('user')) {
+        this.product.localAddToCart(this.productData);
+        this.removeCart = true;
+      } else {
+        let user = localStorage.getItem('user');
+        let userId = user && JSON.parse(user).id;
+        let cartData: cart = {
+          ...this.productData,
+          productId: this.productData.id,
+          userId
+        };
+        delete cartData.id;
+        this.product.addToCart(cartData).subscribe((result) => {
+          if (result) {
+            this.product.getCartList(userId);
+            this.removeCart = true;
+          }
+        });
+      }
+    }
+  }
 
+  removeToCart(productId: number) {
+    if (!localStorage.getItem('user')) {
+      this.product.removeItemFromCart(productId);
+    } else {
+      console.warn("cartData", this.cartData);
+
+      this.cartData && this.product.removeToCart(this.cartData.id)
+        .subscribe((result) => {
+          let user = localStorage.getItem('user');
+          let userId = user && JSON.parse(user).id;
+          this.product.getCartList(userId);
+        });
+    }
+    this.removeCart = false;
+  }
+
+  // pdf section implementation
+  buyNow() {
+    if (!this.isUserLoggedIn()) {
+      this.router.navigate(['/login']);
+    } else {
+      const user = localStorage.getItem('user');
+      const userDetails = JSON.parse(user!);
+
+      // Generate PDF
+      const doc = new jsPDF();
+      doc.setFontSize(20);
+      doc.text('Order Summary', 10, 10);
+      doc.setFontSize(12);
+      doc.text(`Product Name: ${this.productData?.name}`, 10, 30);
+      doc.text(`Price: ${this.productData?.price}`, 10, 40);
+      doc.text(`Quantity: ${this.productQuantity}`, 10, 50);
+      doc.text(`User Name: ${userDetails.name}`, 10, 60);
+      doc.text(`Email: ${userDetails.email}`, 10, 70);
+
+      // Add product image to PDF
+      const image = new Image();
+      image.src = this.productData?.image || '';
+      image.onload = () => {
+        doc.addImage(image, 'JPEG', 10, 80, 50, 50);
+        doc.save('Order-Summary.pdf');
+      };
+
+      this.router.navigate(['/order-summary'], {
+        state: { productData: this.productData, userDetails }
+      });
+    }
+  }
 }

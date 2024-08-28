@@ -1,10 +1,19 @@
+
+input, button{
+  margin: 0;
+    font-family: inherit;
+    font-size: inherit;
+    line-height: inherit;
+    border-radius: 6px;
+}
+
 .nav {
   display: flex;
   justify-content: space-between;
 }
 
 .nav h1 {
-  color: blueviolet;
+  color: rgb(49, 48, 48);;
   margin: 0;
   font-size: 40px;
 }
@@ -18,15 +27,15 @@
 
 .nav .nav-search input {
     flex: 1;
-    color: blueviolet;
-    border: 1px solid blueviolet;
+    color: #88c6df;
+    border: 1px solid #88c6df;
     height: 39px;
     border-right: none;
 }
 
 .nav .nav-search button{
-    color: blueviolet;
-    border: 1px solid blueviolet;
+    color: #88c6df;
+    border: 1px solid #88c6df;
     height: 39px;
 }
 
@@ -44,12 +53,12 @@
 
 .nav ul a {
     text-decoration: none;
-    color: blueviolet;
+    color: #0083b9;
     cursor: pointer;
 }
 
 h1 a{
-  color: blueviolet;
+  color: #5abae1;
   text-decoration: none;
 }
 
@@ -68,5 +77,5 @@ h1 a{
 }
 .suggested-search li a{
   cursor: pointer;
-  color: blueviolet;
+  color: #88c6df;
 }

@@ -15,14 +15,14 @@ body {
 .form-input {
   height: 35px;
   margin-bottom: 20px;
-  border: 1px solid blueviolet;
+  border: 1px solid #88c6df;
   padding-left: 15px;
-  color: blueviolet;
+  color: grayrgb(49, 48, 48);;
 }
 .form-button {
   height: 35px;
-  border: 1px solid blueviolet;
-  color: blueviolet;
+  border: 1px solid #88c6df;
+  color: rgb(49, 48, 48);;
   cursor: pointer;
 }
 .error-p{
@@ -59,7 +59,7 @@ button:disabled{
 
 .background{
     
-    background: #83b381;
+    background: #88c6df;
     
     }
 

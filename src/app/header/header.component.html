@@ -24,7 +24,7 @@
     <li><a>{{userName | titlecase}}</a></li>
     <li><a routerLink="my-orders" >My Orders</a></li>
     <li><a (click)="userLogout()" >Logout</a></li>
-    <fa-icon  [icon]="icon"></fa-icon> 
+    <!-- <fa-icon  [icon]="icon"></fa-icon>  -->
     <li><a [routerLink]="cartItems>0?'cart-page':null">Cart({{cartItems}})</a></li>
   </ul>
   <ul *ngSwitchCase="'seller'" >
