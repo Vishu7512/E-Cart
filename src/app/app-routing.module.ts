@@ -13,6 +13,7 @@ import { SellerHomeComponent } from './seller-home/seller-home.component';
 import { SellerUpdateProductComponent } from './seller-update-product/seller-update-product.component';
 import { UserAuthComponent } from './user-auth/user-auth.component';
 import { OrderSummaryComponent } from './order-summary/order-summary.component';
+import { UserProfileComponent } from './user-profile/user-profile.component';
 
 const routes: Routes = [
   {
@@ -57,6 +58,9 @@ const routes: Routes = [
   },{
     path: 'order-summary',
     component: OrderSummaryComponent
+  }, {
+    path: 'user-profile',
+    component: UserProfileComponent
   }
 ];
 

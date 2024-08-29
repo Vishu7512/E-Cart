@@ -109,35 +109,15 @@ export class ProductDetailsComponent implements OnInit {
   }
 
   // pdf section implementation
-  buyNow() {
-    if (!this.isUserLoggedIn()) {
-      this.router.navigate(['/login']);
-    } else {
-      const user = localStorage.getItem('user');
-      const userDetails = JSON.parse(user!);
-
-      // Generate PDF
-      const doc = new jsPDF();
-      doc.setFontSize(20);
-      doc.text('Order Summary', 10, 10);
-      doc.setFontSize(12);
-      doc.text(`Product Name: ${this.productData?.name}`, 10, 30);
-      doc.text(`Price: ${this.productData?.price}`, 10, 40);
-      doc.text(`Quantity: ${this.productQuantity}`, 10, 50);
-      doc.text(`User Name: ${userDetails.name}`, 10, 60);
-      doc.text(`Email: ${userDetails.email}`, 10, 70);
-
-      // Add product image to PDF
-      const image = new Image();
-      image.src = this.productData?.image || '';
-      image.onload = () => {
-        doc.addImage(image, 'JPEG', 10, 80, 50, 50);
-        doc.save('Order-Summary.pdf');
-      };
-
-      this.router.navigate(['/order-summary'], {
-        state: { productData: this.productData, userDetails }
-      });
-    }
+ buyNow() {
+  if (!this.isUserLoggedIn()) {
+    this.router.navigate(['/login']);
+  } else {
+    const user = localStorage.getItem('user');
+    const userDetails = JSON.parse(user!);
+    this.router.navigate(['/order-summary'], {
+      state: { productData: this.productData, userDetails, productQuantity: this.productQuantity }
+    });
   }
+}
 }

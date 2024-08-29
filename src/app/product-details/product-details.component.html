@@ -8,10 +8,7 @@
         <h3>Price : {{productData.price}}</h3>
         <h6>Category : {{productData.category}}</h6>
         <h6>Description : {{productData.description}}</h6>
-        <button 
-        class="form-button" 
-        (click)="buyNow()"
-        [disabled]="!isUserLoggedIn()">Buy Now</button>
+        <button class="form-button" (click)="buyNow()"[disabled]="!isUserLoggedIn()">Buy Now</button>
         <button *ngIf="removeCart" class="form-button" (click)=" removeToCart(productData.id)">Remove to Cart</button>
         <button *ngIf="!removeCart" class="form-button" (click)="addToCart()">Add to Cart</button>
         <div class="quantity-group">

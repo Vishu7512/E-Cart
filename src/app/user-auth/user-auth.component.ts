@@ -11,6 +11,7 @@ import { UserService } from '../services/user.service';
 export class UserAuthComponent implements OnInit {
   showLogin:boolean=true
   authError:string="";
+  route: any;
   constructor(private user: UserService, private product:ProductService) {}
 
   ngOnInit(): void {
@@ -22,7 +23,9 @@ export class UserAuthComponent implements OnInit {
   }
   login(data: login) {
     this.user.userLogin(data)
-    this.user.invalidUserAuth.subscribe((result)=>{
+    
+
+    this.user.invalidUserAuth.subscribe((result) => {
       console.warn(result);
       if(result){
          this.authError="User not found"

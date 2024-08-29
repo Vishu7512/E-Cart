@@ -45,22 +45,6 @@
   ],
   "products": [
     {
-      "name": "java Book",
-      "price": "567",
-      "category": "book",
-      "description": "this is best reference book ",
-      "image": "https://rukminim2.flixcart.com/image/416/416/xif0q/book/j/t/s/programming-with-java-original-imagvkwpmphmpzyx.jpeg?q=70&crop=false",
-      "id": "1"
-    },
-    {
-      "name": "noise Earbuds",
-      "price": "1230",
-      "category": "Earbuds",
-      "description": "good sound quality",
-      "image": "https://m.media-amazon.com/images/I/413q0NbjBeL._SX300_SY300_QL70_FMwebp_.jpg",
-      "id": "2"
-    },
-    {
       "name": "Python book",
       "price": "660",
       "category": "book ",
@@ -146,24 +130,18 @@
       "productId": 5,
       "userId": 3,
       "id": "8"
-    }
-  ],
-  "orders": [
-    {
-      "email": "anil@user.com",
-      "address": "noida sector x",
-      "contact": "9999",
-      "totalPrice": 104750,
-      "userId": 1,
-      "id": "1"
     },
     {
-      "email": "anil@test.com",
-      "address": "noida sector x",
-      "contact": "8877",
-      "totalPrice": 6100,
-      "userId": 1,
-      "id": "3"
+      "id": "18fe",
+      "name": "Python book",
+      "price": "660",
+      "category": "book ",
+      "description": "this is the best reference book of python",
+      "image": "https://media.springernature.com/full/springer-static/cover-hires/book/978-1-4302-7218-2?as=webp",
+      "quantity": 1,
+      "productId": "3",
+      "userId": "1"
     }
-  ]
+  ],
+  "orders": []
 }

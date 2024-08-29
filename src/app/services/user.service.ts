@@ -39,4 +39,9 @@ invalidUserAuth= new EventEmitter<boolean>(false)
       this.router.navigate(['/']);
     }
   }
+
+//   userUpdate(user: signUp) {
+//   return this.http.put(`http://localhost:3000/users/${user.id}`, user, { observe: 'response' });
+// }
+
 }

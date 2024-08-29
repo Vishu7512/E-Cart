@@ -57,6 +57,15 @@ export class HeaderComponent implements OnInit {
     this.product.cartData.emit([])
   }
 
+
+//   goToUserProfile() {
+//   const userStore = localStorage.getItem('user');
+//   if (userStore) {
+//     const userData = JSON.parse(userStore);
+//     this.route.navigate(['/user-profile'], { state: { user: userData } });
+//   }
+// }
+
   searchProduct(query:KeyboardEvent){
     if(query){
       const element = query.target as HTMLInputElement;
