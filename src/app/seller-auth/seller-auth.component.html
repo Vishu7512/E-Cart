@@ -1,54 +1,32 @@
 <div class="seller-auth">
-  <div *ngIf="!showLogin" class="sign-up">
-    <h1>Seller sign-up</h1>
-    <form #sellerSignUp="ngForm" (ngSubmit)="signUp(sellerSignUp.value)" class="common-form">
-      <input
-        type="text"
-        class="form-input"
-        placeholder="Enter Name"
-        name="name"
-        ngModel
-      />
-      <input
-        type="password"
-        class="form-input"
-        placeholder="Enter Password"
-        name="password"
-        ngModel
-      />
-      <input
-        type="text"
-        class="form-input"
-        placeholder="Enter Email"
-        name="email"
-        ngModel
-      />
-      <button class="form-button">Sign Up</button>
-      <a class="auth-toggle-link" (click)="openLogin()">Already have account? Click for Login</a>
-    </form>
-  </div>
-
-  <div *ngIf="showLogin" class="login">
-    <h1>Seller Login</h1>
-    <p class="error-p">{{authError}}</p>
-    <form #sellerLogin="ngForm" (ngSubmit)="login(sellerLogin.value)" class="common-form">
-      <input
-      type="text"
-      class="form-input"
-      placeholder="Enter Email"
-      name="email"
-      ngModel
-    />
-      <input
-        type="password"
-        class="form-input"
-        placeholder="Enter Password"
-        name="password"
-        ngModel
-      />
-      <button class="form-button">Login</button>
-      <a class="auth-toggle-link" (click)="openSignUp()">Don't have account? Click for sign-up</a>
-
-    </form>
+  <div *ngIf="showLogin" class="login-card">
+    <div class="card-header">
+      <h1>Seller Login</h1>
+    </div>
+    <div class="card-body">
+      <p class="error-p">{{ authError }}</p>
+      <form [formGroup]="loginForm" (ngSubmit)="login()" class="common-form">
+        <input
+          type="email"
+          class="form-input"
+          placeholder="Enter Email"
+          formControlName="email"
+        />
+        <div *ngIf="loginForm.get('email')?.invalid && loginForm.get('email')?.touched" class="error-message">
+          Valid email is required.
+        </div>
+        <input
+          type="password"
+          class="form-input"
+          placeholder="Enter Password"
+          formControlName="password"
+        />
+        <div *ngIf="loginForm.get('password')?.invalid && loginForm.get('password')?.touched" class="error-message">
+          Password must be at least 6 characters long.
+        </div>
+        <button class="form-button" [disabled]="loginForm.invalid">Login</button>
+      </form>
+    </div>
+    <!-- <a class="auth-toggle-link" (click)="openSignUp()">Don't have an account? Click for sign-up</a> -->
   </div>
 </div>

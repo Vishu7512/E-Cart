@@ -1,14 +1,68 @@
-.user-auth h1{
-    margin-top: 50px;
-    margin-bottom: 80px;
-    color: rgb(49, 48, 48);;  
-    text-align: center; 
+.user-auth {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 70vh;
+  background-color: #f4f6f9;
 }
 
-.user-auth {
-    margin-bottom: 100px;
+.card {
+  background: white;
+  border-radius: 10px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  width: 450px;
+  max-width: 100%;
+  padding: 30px;
 }
-.user-auth a{
-    color: rgb(49, 48, 48);;
-    cursor: pointer;
+
+.card-header h1 {
+  margin: 0;
+  color: #1e94c3;
+  font-size: 26px;
+  text-align: center;
+}
+
+.card-body {
+  display: flex;
+  flex-direction: column;
+  margin-top: 20px;
+}
+
+.form-input {
+  margin-bottom: 15px;
+  padding: 12px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.form-button {
+  background-color: #1e94c3;
+  color: white;
+  padding: 6px;
+  font-size: 16px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-top: 10px;
+}
+
+.form-button[disabled] {
+  background-color: #1e94c3;
+  cursor: not-allowed;
+}
+
+.error-p, .invalid-input {
+  color: red;
+  font-size: 14px;
+}
+
+a {
+  color: #1e94c3;
+  cursor: pointer;
+}
+
+.footer {
+  margin-left: 30px;
+    margin-top: 10px;
 }

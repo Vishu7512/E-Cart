@@ -6,6 +6,9 @@ import { cart, order, product } from '../data-type';
   providedIn: 'root',
 })
 export class ProductService {
+  // popularProducts() {
+  //   throw new Error('Method not implemented.');
+  // }
   cartData = new EventEmitter<product[] | []>();
   constructor(private http: HttpClient) { }
   addProduct(data: product) {
@@ -32,6 +35,9 @@ export class ProductService {
   // popularProducts() {
   //   return this.http.get<product[]>('http://localhost:3000/products?_limit=3');
   // }
+  popularProducts() {
+    return this.http.get<product[]>('http://localhost:3000/products?_limit=3')
+  }
 
   trendyProducts() {
     return this.http.get<product[]>('http://localhost:3000/products?_limit=20');

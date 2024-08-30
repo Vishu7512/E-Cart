@@ -1,15 +1,66 @@
-.sign-up, .login{
-    text-align: center;
+.seller-auth {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 70vh;
+  background-color: #f7f7f7;
 }
-.sign-up h1, .login h1{
-    margin-top: 50px;
-    margin-bottom: 80px;
-    color: rgb(49, 48, 48);   
+
+.login-card {
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  width: 400px;
+  max-width: 100%;
+  padding: 20px;
 }
-.auth-toggle-link{
-    color: rgb(59, 59, 231);
-    font-size: 14px;
-    margin-top: 20px;
-    text-align: left;
-    cursor: pointer;
+
+.card-header h1 {
+  margin-top: 0;
+  margin-bottom: 20px;
+  color: #313131;
+  font-size: 24px;
+  text-align: center;
+}
+
+.card-body {
+  display: flex;
+  flex-direction: column;
+}
+
+.form-input {
+  margin-bottom: 15px;
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.form-button {
+  background-color: #1e94c3;
+  color: white;
+  padding: 10px;
+  font-size: 16px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.form-button[disabled] {
+  background-color: #488ca7;
+  cursor: not-allowed;
+}
+
+.error-p {
+  color: red;
+  font-size: 14px;
+  margin-bottom: 10px;
+}
+
+.auth-toggle-link {
+  color: #3b3be7;
+  font-size: 14px;
+  margin-top: 20px;
+  text-align: center;
+  cursor: pointer;
 }

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { signUp } from '../data-type';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { SellerService } from '../services/seller.service';
+
 
 @Component({
   selector: 'app-seller-auth',
@@ -8,29 +9,34 @@ import { SellerService } from '../services/seller.service';
   styleUrls: ['./seller-auth.component.css'],
 })
 export class SellerAuthComponent implements OnInit {
-  showLogin=false;
-  authError:String='';
-  constructor(private seller: SellerService) {}
+  showLogin = true;
+  authError: String = '';
+  loginForm: FormGroup;
+
+  constructor(private seller: SellerService, private fb: FormBuilder) {
+    this.seller.reloadSeller();
+    this.loginForm = this.fb.group({
+      email: ['', [Validators.required, Validators.email]],
+      password: ['', [Validators.required, Validators.minLength(6)]],
+    });
+  }
 
   ngOnInit(): void {
-    this.seller.reloadSeller()
+    
   }
-  signUp(data: signUp): void {
-    console.warn(data);
-    this.seller.userSignUp(data);
+
+  login(): void {
+    if (this.loginForm.valid) {
+      this.seller.userLogin(this.loginForm.value);
+      this.seller.isLoginError.subscribe((isError) => {
+        if (isError) {
+          this.authError = 'Email or password is not correct';
+        }
+      });
+    }
   }
-  login(data: signUp): void {
-    this.seller.userLogin(data);
-    this.seller.isLoginError.subscribe((isError)=>{
-      if(isError){
-        this.authError="Email or password is not correct";
-      }
-    })
-  }
-  openLogin(){
-    this.showLogin=true
-  }
-  openSignUp(){
-    this.showLogin=false
+
+  openLogin() {
+    this.showLogin = true;
   }
 }

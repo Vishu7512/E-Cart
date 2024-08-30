@@ -7,7 +7,9 @@ import { SellerService } from './services/seller.service';
   providedIn: 'root'
 })
 export class AuthGuard implements CanActivate {
-  constructor(private sellerService:SellerService){}
+  isLoggedIn: any;
+  constructor(private sellerService: SellerService) { }
+  
   canActivate(
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {

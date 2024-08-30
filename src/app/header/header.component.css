@@ -8,8 +8,14 @@ input, button{
 }
 
 .nav {
-  display: flex;
-  justify-content: space-between;
+     display: flex;
+    justify-content: space-between;
+    padding-left: 6%;
+    padding-right: 8%;
+    margin-left: -7.1%;
+    margin-right: -15.4%;
+    background: #1e94c3;
+    height: 65px;
 }
 
 .nav h1 {
@@ -53,12 +59,12 @@ input, button{
 
 .nav ul a {
     text-decoration: none;
-    color: #0083b9;
+    color: #ffffff;
     cursor: pointer;
 }
 
 h1 a{
-  color: #5abae1;
+  color: #ffffff;
   text-decoration: none;
 }
 

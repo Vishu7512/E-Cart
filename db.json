@@ -1,55 +1,19 @@
 {
   "seller": [
     {
-      "name": "sam sidhu",
-      "email": "sam@seller.com",
-      "password": "abc@123",
+      "name": "vishal",
+      "email": "vishal@gmail.com",
+      "password": "vishal@gmail.com",
       "id": "2"
-    },
-    {
-      "name": "peter",
-      "password": "abc@123",
-      "email": "peter@test.com",
-      "id": "3"
-    },
-    {
-      "name": "bruce",
-      "password": "abc@123",
-      "email": "bruce@test.com",
-      "id": "4"
-    },
-    {
-      "name": "anil",
-      "password": "abc123",
-      "email": "anil@test.com",
-      "id": "5"
-    },
-    {
-      "name": "alena",
-      "password": "abc123",
-      "email": "alena@test.com",
-      "id": "6"
-    },
-    {
-      "name": "sam",
-      "password": "abc@123",
-      "email": "sam@test.com",
-      "id": "7"
-    },
-    {
-      "name": "bhasker",
-      "password": "abc@123",
-      "email": "bhasker@test.com",
-      "id": "8"
     }
   ],
   "products": [
     {
-      "name": "Python book",
+      "name": "Girls dress",
       "price": "660",
-      "category": "book ",
-      "description": "this is the best reference book of python",
-      "image": "https://media.springernature.com/full/springer-static/cover-hires/book/978-1-4302-7218-2?as=webp",
+      "category": "cloth ",
+      "description": "Wedding dress isolated on white background with good fabric ",
+      "image": "https://img.freepik.com/premium-photo/wedding-dress-isolated-white-background_743855-22662.jpg?w=740",
       "id": "3"
     },
     {
@@ -91,6 +55,24 @@
       "category": "q",
       "description": "e",
       "image": "https://cdn.pixabay.com/photo/2016/11/19/18/06/feet-1840619_640.jpg"
+    },
+    {
+      "id": "a7bb",
+      "name": "",
+      "price": "",
+      "category": "",
+      "color": "",
+      "description": "",
+      "image": ""
+    },
+    {
+      "id": "eb66",
+      "name": "",
+      "price": "",
+      "category": "",
+      "color": "",
+      "description": "",
+      "image": ""
     }
   ],
   "users": [
@@ -117,6 +99,24 @@
       "email": "tony@user.com",
       "password": "abc123",
       "id": "4"
+    },
+    {
+      "id": "a2a3",
+      "name": "vishal gupta",
+      "email": "vishal@gmail.com",
+      "password": "vishal@gmail.com"
+    },
+    {
+      "id": "3b19",
+      "name": "",
+      "email": "",
+      "password": ""
+    },
+    {
+      "id": "71f1",
+      "name": "",
+      "email": "",
+      "password": ""
     }
   ],
   "cart": [
@@ -141,7 +141,35 @@
       "quantity": 1,
       "productId": "3",
       "userId": "1"
+    },
+    {
+      "id": "4f72",
+      "name": "Girls dress",
+      "price": "660",
+      "category": "cloth ",
+      "description": "Wedding dress isolated on white background with good fabric ",
+      "image": "https://img.freepik.com/premium-photo/wedding-dress-isolated-white-background_743855-22662.jpg?w=740",
+      "quantity": 1,
+      "productId": "3",
+      "userId": "a2a3"
     }
   ],
-  "orders": []
+  "orders": [
+    {
+      "id": "8d51",
+      "email": "",
+      "address": "",
+      "contact": "",
+      "totalPrice": 760,
+      "userId": "a2a3"
+    },
+    {
+      "id": "2106",
+      "email": "vishal@gmail.com",
+      "address": "AGRA",
+      "contact": "45678912347542",
+      "totalPrice": 760,
+      "userId": "a2a3"
+    }
+  ]
 }
