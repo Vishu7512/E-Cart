@@ -130,4 +130,21 @@ export class ProductDetailsComponent implements OnInit {
       });
     }
   }
+
+  // buyNow() {
+  //   if (!this.isUserLoggedIn()) {
+  //     this.router.navigate(['/login']);
+  //   } else {
+  //     const user = localStorage.getItem('user');
+  //     const userDetails = JSON.parse(user!);
+  //     this.router.navigate(['/checkout'], {
+  //       state: {
+  //         productData: this.productData,
+  //         userDetails,
+  //         productQuantity: this.productQuantity,
+  //       },
+  //     });
+  //   }
+  // }
+
 }

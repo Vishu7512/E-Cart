@@ -43,7 +43,7 @@
 }
 
 a{
-        color: #000000;
+        color: #ffff;
     text-decoration: none;
 }
 
@@ -58,3 +58,18 @@ a{
     overflow: hidden;
     margin-top: 20px;
 }
+
+.form-button {
+    background-color: #1e94c3;
+    color: white;
+    padding: 7px;
+    font-size: 15px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  .form-button:hover {
+    background-color: #5b91a6;
+    
+  }

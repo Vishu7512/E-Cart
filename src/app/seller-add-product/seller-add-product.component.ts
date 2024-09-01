@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { product } from '../data-type';
 import { ProductService } from '../services/product.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-seller-add-product',
@@ -9,7 +10,8 @@ import { ProductService } from '../services/product.service';
 })
 export class SellerAddProductComponent implements OnInit {
   addProductMessage: string | undefined;
-  constructor(private product: ProductService) {}
+  // router: any;
+  constructor(private product: ProductService , private router:Router) {}
 
   ngOnInit(): void {}
 
@@ -18,11 +20,19 @@ export class SellerAddProductComponent implements OnInit {
       console.warn(result);
       if (result) {
         this.addProductMessage = 'Product is added successfully';
+        this.router.navigate(['/seller-home']);
       }
     });
 
     setTimeout(() => {
-      this.addProductMessage=undefined
-    }, 3000);
+      this.addProductMessage = undefined;
+      this.router.navigate(['/seller-home']);
+    }, 2000);
+    
+  }
+  
+
+  validateForm() {
+    // This function is triggered on every input change to update the form validation
   }
 }

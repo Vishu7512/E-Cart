@@ -12,8 +12,10 @@ input, button{
     justify-content: space-between;
     padding-left: 6%;
     padding-right: 8%;
-    margin-left: -7.1%;
-    margin-right: -15.4%;
+    /* margin-left: -7.1%;
+    margin-right: -15.4%; */
+    margin-left: -8.8%;
+    margin-right: -10.5%;
     background: #1e94c3;
     height: 65px;
 }
@@ -102,17 +104,22 @@ h1 a{
   border: 1px solid #ccc;
   border-radius: 25px;
   font-size: 16px;
+  box-sizing: border-box; /* Ensures padding is included in width */
 }
 
 .search-button {
   position: absolute;
-  right: 10px;
-  top: 50%;
-  transform: translateY(-50%);
-  background: none;
-  border: none;
-  cursor: pointer;
-  padding: 0;
+    right: 20px;
+    top: 42%;
+    transform: translateY(-50%);
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #989898;
 }
 
 .search-button i {
@@ -127,4 +134,12 @@ h1 a{
 
 .search-button:focus {
   outline: none;
+}
+
+
+/* cart icon */
+
+.svg-inline {
+  margin-top: 16px;
+  padding-left: 15px;
 }

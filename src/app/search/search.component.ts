@@ -16,8 +16,9 @@ export class SearchComponent implements OnInit {
     let query = this.activeRoute.snapshot.paramMap.get('query');
     console.warn(query);
     query && this.product.searchProduct(query).subscribe((result)=>{
+      console.warn('Search Results:', result);
       this.searchResult=result;
-      
+  
     })
     
 

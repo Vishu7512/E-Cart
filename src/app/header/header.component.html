@@ -20,7 +20,8 @@
            placeholder="Search Products"
            (keypress)="submitSearch($event, searchInput.value)">
     <button class="search-button">
-      <i class="fas fa-search"></i>
+      <!-- <i class="fas fa-search"></i> -->
+      <fa-icon  [icon]="icon"></fa-icon>
     </button>
   </div>
 
@@ -38,8 +39,8 @@
      <!-- <li><a >{{userName | titlecase}}</a></li> -->
     <li><a routerLink="my-orders" >My Orders</a></li>
     <li><a (click)="userLogout()" >Logout</a></li>
-    <!-- <fa-icon  [icon]="icon"></fa-icon>  -->
-    <li><a [routerLink]="cartItems>0?'cart-page':null">Cart({{cartItems}})</a></li>
+    <a class="svg-inline"><fa-icon   [icon]="icons" [routerLink]="cartItems>0?'cart-page':null">Cart({{cartItems}}) > </fa-icon> </a>
+    <!-- <li><a [routerLink]="cartItems>0?'cart-page':null">Cart({{cartItems}})</a></li> -->
   </ul>
   <ul *ngSwitchCase="'seller'" >
     <li><a routerLink="seller-add-product">Add Product</a></li>

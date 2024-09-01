@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { product } from '../data-type';
 import { ProductService } from '../services/product.service';
 import { faCartShopping } from '@fortawesome/free-solid-svg-icons';
+import { faSearch } from '@fortawesome/free-solid-svg-icons';
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
@@ -14,7 +15,8 @@ export class HeaderComponent implements OnInit {
   userName:string="";
   searchResult:undefined|product[];
   cartItems = 0;
-  icon = faCartShopping;
+  icons = faCartShopping;
+  icon =faSearch;
   constructor(private route: Router, private product:ProductService) {}
 
   ngOnInit(): void {

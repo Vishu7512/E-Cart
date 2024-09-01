@@ -3,7 +3,7 @@
   justify-content: center;
   align-items: center;
   min-height: 100vh;
-  background-color: #f4f4f4;
+  /* background-color: #f9f9f9; */
 }
 
 .product-card {
@@ -11,7 +11,7 @@
   border-radius: 10px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
   padding: 30px;
-  width: 400px;
+  width: 500px;
   max-width: 100%;
   text-align: center;
 }
@@ -23,12 +23,20 @@
 }
 
 .message-p {
-  color: green;
+  color: #38a169;
   margin-bottom: 20px;
+  font-weight: bold;
 }
 
-.form-group {
+.add-product-form .form-group {
   margin-bottom: 15px;
+  text-align: left;
+}
+
+.add-product-form .form-group label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: 600;
 }
 
 .form-input {
@@ -40,6 +48,11 @@
   box-sizing: border-box;
 }
 
+textarea.form-input {
+  height: 100px;
+  resize: vertical;
+}
+
 .form-button {
   background-color: #1e94c3;
   color: white;
@@ -49,8 +62,14 @@
   border-radius: 5px;
   cursor: pointer;
   width: 100%;
+  transition: background-color 0.3s ease;
 }
 
-.form-button:hover {
+.form-button[disabled] {
   background-color: #1e94c3;
+  cursor: not-allowed;
+}
+
+.form-button:hover:not([disabled]) {
+  background-color: #5f9eb7;
 }

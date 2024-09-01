@@ -5,7 +5,7 @@
       <img class="product-img" [src]="productData?.image" alt="{{productData?.name}}">
       <div class="details">
         <h2>{{productData?.name}}</h2>
-        <p><strong>Price:</strong> {{productData?.price | currency}}</p>
+        <p><strong>Price:</strong> {{productData?.price | currency:'INR' }}</p>
         <p><strong>Quantity:</strong> {{productQuantity}}</p>
       </div>
     </div>

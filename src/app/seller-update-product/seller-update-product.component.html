@@ -1,48 +1,70 @@
 <div class="update-product">
-    <h1>Update Product</h1>
-    <p class="message-p">{{productMessage}}</p>
-    <form #addProduct="ngForm"
-    (ngSubmit)="submit(addProduct.value)"
-     class="common-form">
+  <h1>Update Product</h1>
+  <p class="message-p" *ngIf="productMessage">{{ productMessage }}</p>
+  <form
+    #updateProductForm="ngForm"
+    (ngSubmit)="submit(updateProductForm.value)"
+    class="update-product-form"
+  >
+    <div class="form-group">
+      <label for="name">Product Name</label>
       <input
+        id="name"
         type="text"
         class="form-input"
         placeholder="Enter Product Name"
         name="name"
-        ngModel="{{productData?.name}}"
+        [ngModel]="productData?.name"
       />
-      <input
-      type="text"
-      class="form-input"
-      placeholder="Enter Product Price"
-      name="price"
-      ngModel="{{productData?.price}}"
-    />
-    <input
-    type="text"
-    class="form-input"
-    placeholder="Enter Product Category"
-    name="category"
-    ngModel="{{productData?.category}}"
-  />
+    </div>
 
-  <textarea
-  type="text"
-  class="form-input"
-  placeholder="Enter Product Description"
-  name="description"
-  ngModel="{{productData?.description}}"
-  ></textarea>
-  
-  <input
-  type="text"
-  class="form-input"
-  placeholder="Enter Product Image URL"
-  name="image"
-  ngModel="{{productData?.image}}"
-  />
-  <button class="form-button">Update Product</button>
-  
-    </form>
-  </div>
-  
+    <div class="form-group">
+      <label for="price">Product Price</label>
+      <input
+        id="price"
+        type="number"
+        class="form-input"
+        placeholder="Enter Product Price"
+        name="price"
+        [ngModel]="productData?.price"
+      />
+    </div>
+
+    <div class="form-group">
+      <label for="category">Product Category</label>
+      <input
+        id="category"
+        type="text"
+        class="form-input"
+        placeholder="Enter Product Category"
+        name="category"
+        [ngModel]="productData?.category"
+      />
+    </div>
+
+    <div class="form-group">
+      <label for="description">Product Description</label>
+      <textarea
+        id="description"
+        class="form-input"
+        placeholder="Enter Product Description"
+        name="description"
+        [ngModel]="productData?.description"
+      ></textarea>
+    </div>
+
+    <div class="form-group">
+      <label for="image">Product Image URL</label>
+      <input
+        id="image"
+        type="url"
+        class="form-input"
+        placeholder="Enter Product Image URL"
+        name="image"
+        [ngModel]="productData?.image"
+      />
+    </div>
+
+    <button class="form-button" type="submit">Update Product</button>
+  </form>
+</div>
