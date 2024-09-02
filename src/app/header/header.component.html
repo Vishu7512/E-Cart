@@ -20,10 +20,19 @@
            placeholder="Search Products"
            (keypress)="submitSearch($event, searchInput.value)">
     <button class="search-button">
-      <!-- <i class="fas fa-search"></i> -->
-      <fa-icon  [icon]="icon"></fa-icon>
+      <fa-icon [icon]="icon"></fa-icon>
     </button>
+  
+    <!-- Display search suggestions -->
+    <ul class="suggested-search" *ngIf="searchResult && searchResult.length > 0">
+      <li *ngFor="let item of searchResult">
+        <a (mousedown)="redirectToDetails(item.id)">
+          {{ item.name }}
+        </a>
+      </li>
+    </ul>
   </div>
+  
 
  <div [ngSwitch]="menuType">
   <ul *ngSwitchCase="'default'" >
@@ -37,13 +46,20 @@
     <li><a routerLink="">Home</a></li>
     <a class="svg-inline"><fa-icon   [icon]="icons" [routerLink]="cartItems>0?'cart-page':null">> </fa-icon> </a>
     <span class="badge badge-light">{{cartItems}}</span>
-    <fa-icon class="profile" [icon]="user"></fa-icon>
-    <!-- <i class="fas fa-user-circle"></i> -->
-    <li><a >{{userName | titlecase}}</a></li>    <!-- (click)="goToUserProfile()"  -->
-    <fa-icon [icon]="profile"></fa-icon>
+    <div class="dropdown" (click)="toggleDropdown()">
+      <fa-icon class="profile" [icon]="user"></fa-icon>
+      <li>{{userName | titlecase}}</li>
+      <li><fa-icon [icon]="profile"></fa-icon></li>
+    
+      <ul class="dropdown-menu" *ngIf="isDropdownOpen">
+        <li><a routerLink="my-orders">My Orders</a></li>
+        <li><a (click)="userLogout()">Logout</a></li>
+      </ul>
+    </div>
+    
      <!-- <li><a >{{userName | titlecase}}</a></li> -->
-    <li><a routerLink="my-orders" >My Orders</a></li>
-    <li><a (click)="userLogout()" >Logout</a></li>
+    <!-- <li><a routerLink="my-orders" >My Orders</a></li>
+    <li><a (click)="userLogout()" >Logout</a></li> -->
 
     <!-- <li><a [routerLink]="cartItems>0?'cart-page':null">Cart({{cartItems}})</a></li> -->
   </ul>
@@ -51,7 +67,7 @@
     <li><a routerLink="seller-add-product">Add Product</a></li>
     <li><a routerLink="seller-home">List</a></li>
     <li><a (click)="logout()">Logout</a></li>
-    <li><a href="#">{{sellerName | titlecase}}</a></li>
+    <li>{{sellerName | titlecase}}</li>
   </ul>
  </div>
 </nav>

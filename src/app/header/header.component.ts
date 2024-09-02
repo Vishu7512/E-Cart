@@ -21,6 +21,7 @@ export class HeaderComponent implements OnInit {
   icon = faSearch;
   user = faUserCircle;
   profile = faCaretDown;
+  isDropdownOpen = false;
   constructor(private route: Router, private product:ProductService) {}
 
   ngOnInit(): void {
@@ -98,4 +99,8 @@ export class HeaderComponent implements OnInit {
       this.route.navigate([`search/${val}`]);
     }
   }
+
+  toggleDropdown() {
+  this.isDropdownOpen = !this.isDropdownOpen;
+}
 }
