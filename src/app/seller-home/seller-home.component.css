@@ -102,3 +102,9 @@
 .edit-icon {
     color: #1e94c3;
 }
+.confirmButton{
+    /* display: inline-block; */
+    background: #1e94c3;
+    margin-left: 10px;
+
+}

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { cart, priceSummary } from '../data-type';
+import { cart, priceSummary, product } from '../data-type';
 import { ProductService } from '../services/product.service';
 
 @Component({
@@ -19,10 +19,38 @@ export class CartPageComponent implements OnInit {
   }
   constructor(private product: ProductService, private router: Router) { }
 
-  ngOnInit(): void {
-   this.loadDetails()
+  // ngOnInit(): void {
+  //  this.loadDetails()
 
+  // }
+
+
+  ngOnInit(): void {
+  this.loadDetails();
+
+  const state = this.router.getCurrentNavigation()?.extras.state;
+  if (state) {
+    const productData = state['productData'];
+    const productQuantity = state['productQuantity'];
+    if (productData && productQuantity) {
+      this.addToCart(productData, productQuantity);
+    }
   }
+}
+
+addToCart(productData: product, quantity: number) {
+  productData.quantity = quantity;
+
+  // Check if the product is already in the cart
+  const existingProduct = this.cartData?.find(item => item.productId === productData.id);
+
+  if (!existingProduct) {
+    this.product.localAddToCart(productData);
+    this.loadDetails(); // Refresh the cart details to reflect the new addition
+  }
+}
+
+
 
   removeToCart(cartId:number|undefined){
     cartId && this.cartData && this.product.removeToCart(cartId)

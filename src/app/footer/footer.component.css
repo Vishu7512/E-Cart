@@ -10,9 +10,11 @@ ul{
     right: 0;
     left: 0;
     background-color: #1e94c3;
-    margin-left: -7%;
-    margin-right: -10.5%;
+    /* margin-left: -7%;
+    margin-right: -10.5%; */
     height: 215px;
+    margin-left: -7%;
+    margin-right: -15.5%;
 }
 .footer ul{
     list-style-type: none;

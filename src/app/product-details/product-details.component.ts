@@ -115,29 +115,13 @@ export class ProductDetailsComponent implements OnInit {
   }
 
   // pdf section implementation
-  buyNow() {
-    if (!this.isUserLoggedIn()) {
-      this.router.navigate(['/login']);
-    } else {
-      const user = localStorage.getItem('user');
-      const userDetails = JSON.parse(user!);
-      this.router.navigate(['/order-summary'], {
-        state: {
-          productData: this.productData,
-          userDetails,
-          productQuantity: this.productQuantity,
-        },
-      });
-    }
-  }
-
   // buyNow() {
   //   if (!this.isUserLoggedIn()) {
   //     this.router.navigate(['/login']);
   //   } else {
   //     const user = localStorage.getItem('user');
   //     const userDetails = JSON.parse(user!);
-  //     this.router.navigate(['/checkout'], {
+  //     this.router.navigate(['/order-summary'], {
   //       state: {
   //         productData: this.productData,
   //         userDetails,
@@ -146,5 +130,47 @@ export class ProductDetailsComponent implements OnInit {
   //     });
   //   }
   // }
+
+
+buyNow() {
+  if (!this.isUserLoggedIn()) {
+    this.router.navigate(['/login']);
+  } else {
+    const user = localStorage.getItem('user');
+    const userDetails = JSON.parse(user!);
+
+    if (this.productData) {
+      this.productData.quantity = this.productQuantity;
+
+      if (!localStorage.getItem('user')) {
+        this.product.localAddToCart(this.productData);
+      } else {
+        let userId = userDetails.id;
+        let cartData: cart = {
+          ...this.productData,
+          productId: this.productData.id,
+          userId,
+        };
+        delete cartData.id;
+
+        this.product.addToCart(cartData).subscribe((result) => {
+          if (result) {
+            this.product.getCartList(userId);
+          }
+        });
+      }
+
+      // After adding to cart, navigate to the cart page
+      this.router.navigate(['/cart-page'], {
+        state: {
+          productData: this.productData,
+          userDetails,
+          productQuantity: this.productQuantity,
+        },
+      });
+    }
+  }
+}
+
 
 }

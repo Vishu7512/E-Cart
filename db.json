@@ -9,22 +9,6 @@
   ],
   "products": [
     {
-      "name": "Girls dress",
-      "price": "660",
-      "category": "cloth ",
-      "description": "Wedding dress isolated on white background with good fabric ",
-      "image": "https://img.freepik.com/premium-photo/wedding-dress-isolated-white-background_743855-22662.jpg?w=740",
-      "id": "3"
-    },
-    {
-      "name": "Nike Shoes",
-      "price": "3000",
-      "category": "Shoes",
-      "description": "Best shoes for Running",
-      "image": "https://static.nike.com/a/images/t_PDP_1280_v1/f_auto,q_auto:eco/1eeaacc0-e07c-4024-a5f7-57f2fd23e8a2/air-max-270-g-golf-shoe-Z6vCfs.png",
-      "id": "4"
-    },
-    {
       "name": "Levies Jeans",
       "price": "5000",
       "category": "Jeans",
@@ -57,20 +41,28 @@
       "image": "https://www.reliancedigital.in/medias/Noise-Colorfit-Pro-2-Smart-Watch-491900986-i-1-1200Wx1200H-300Wx300H?context=bWFzdGVyfGltYWdlc3w1MDc0NXxpbWFnZS9qcGVnfGltYWdlcy9oYzkvaDdjLzk1OTE4MjA3NDY3ODIuanBnfDA3MjZlMzkzOTExYzMyNzk5Y2YzOTk0MWFkMjc5YjE5OTlkMDE4NzYzYTg1YzQ2YmNjZjMxYzc5ZDJiYjBlNDg"
     },
     {
-      "id": "6b66",
-      "name": "Mens Jeans",
-      "price": 2999,
-      "category": "dress",
-      "description": "Confirmable jeans for man",
+      "id": "b85e",
+      "name": "Demo",
+      "price": 53,
+      "category": "book ",
+      "description": "asfsdafjksdgf",
+      "image": "https://letsenhance.io/static/73136da51c245e80edc6ccfe44888a99/1015f/MainBefore.jpg"
+    },
+    {
+      "id": "2bb0",
+      "name": "jeans",
+      "price": 1299,
+      "category": "Dress",
+      "description": "good product",
       "image": "https://cdn.pixabay.com/photo/2017/09/29/15/45/woman-2799490_1280.jpg"
     },
     {
-      "id": "322d",
-      "name": "jeans",
-      "price": 2399,
-      "category": "dress",
-      "description": "good dress",
-      "image": "https://cdn.pixabay.com/photo/2017/09/29/15/45/woman-2799490_1280.jpg"
+      "id": "a9bc",
+      "name": "Smart-watch",
+      "price": 9999,
+      "category": "watch",
+      "description": "good",
+      "image": "https://www.reliancedigital.in/medias/Noise-Colorfit-Pro-2-Smart-Watch-491900986-i-1-1200Wx1200H-300Wx300H?context=bWFzdGVyfGltYWdlc3w1MDc0NXxpbWFnZS9qcGVnfGltYWdlcy9oYzkvaDdjLzk1OTE4MjA3NDY3ODIuanBnfDA3MjZlMzkzOTExYzMyNzk5Y2YzOTk0MWFkMjc5YjE5OTlkMDE4NzYzYTg1YzQ2YmNjZjMxYzc5ZDJiYjBlNDg"
     }
   ],
   "users": [
@@ -103,6 +95,18 @@
       "name": "vishal gupta",
       "email": "vishal@gmail.com",
       "password": "vishal@gmail.com"
+    },
+    {
+      "id": "2686",
+      "name": "Deepak",
+      "email": "deepak@abc.com",
+      "password": "123456"
+    },
+    {
+      "id": "a5d0",
+      "name": "anuj",
+      "email": "anuj@gmail.com",
+      "password": "anuj@gmail.com"
     }
   ],
   "cart": [
@@ -125,37 +129,52 @@
       "description": "this is the best reference book of python",
       "image": "https://media.springernature.com/full/springer-static/cover-hires/book/978-1-4302-7218-2?as=webp",
       "quantity": 1,
-      "productId": "3",
+      "productId": null,
       "userId": "1"
     },
     {
-      "id": "7920",
-      "name": "Girls dress",
-      "price": "660",
-      "category": "cloth ",
-      "description": "Wedding dress isolated on white background with good fabric ",
-      "image": "https://img.freepik.com/premium-photo/wedding-dress-isolated-white-background_743855-22662.jpg?w=740",
+      "id": "9196",
+      "name": "Nike Shoes",
+      "price": "3000",
+      "category": "Shoes",
+      "description": "Best shoes for Running",
+      "image": "https://static.nike.com/a/images/t_PDP_1280_v1/f_auto,q_auto:eco/1eeaacc0-e07c-4024-a5f7-57f2fd23e8a2/air-max-270-g-golf-shoe-Z6vCfs.png",
       "quantity": 1,
-      "productId": "3",
+      "productId": null,
+      "userId": "a2a3"
+    },
+    {
+      "id": "848f",
+      "name": "Nike Shoes",
+      "price": "3000",
+      "category": "Shoes",
+      "description": "Best shoes for Running",
+      "image": "https://static.nike.com/a/images/t_PDP_1280_v1/f_auto,q_auto:eco/1eeaacc0-e07c-4024-a5f7-57f2fd23e8a2/air-max-270-g-golf-shoe-Z6vCfs.png",
+      "quantity": 1,
+      "productId": null,
+      "userId": "a2a3"
+    },
+    {
+      "id": "3d2e",
+      "name": "Noise Smart Watch",
+      "price": "2000",
+      "category": "Watch",
+      "description": "Noise smart watch for man and women both",
+      "image": "https://www.reliancedigital.in/medias/Noise-Colorfit-Pro-2-Smart-Watch-491900986-i-1-1200Wx1200H-300Wx300H?context=bWFzdGVyfGltYWdlc3w1MDc0NXxpbWFnZS9qcGVnfGltYWdlcy9oYzkvaDdjLzk1OTE4MjA3NDY3ODIuanBnfDA3MjZlMzkzOTExYzMyNzk5Y2YzOTk0MWFkMjc5YjE5OTlkMDE4NzYzYTg1YzQ2YmNjZjMxYzc5ZDJiYjBlNDg",
+      "quantity": 14,
+      "productId": "7",
       "userId": "a2a3"
     }
   ],
   "orders": [
     {
-      "id": "7503",
-      "email": "",
-      "address": "",
-      "contact": "",
-      "totalPrice": 100,
-      "userId": "a2a3"
-    },
-    {
-      "id": "925c",
-      "email": "",
-      "address": "",
-      "contact": "",
-      "totalPrice": 3760,
-      "userId": "a2a3"
+      "id": "f135",
+      "name": "java Book",
+      "email": "avb@gmail.com",
+      "address": "AGRA",
+      "contact": "45678912347542",
+      "totalPrice": 10100,
+      "userId": "2686"
     }
   ]
 }

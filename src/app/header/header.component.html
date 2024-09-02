@@ -35,11 +35,16 @@
   <ul *ngSwitchCase="'user'" >
     <!-- <li><a routerLink="seller-auth">Seller</a></li> -->
     <li><a routerLink="">Home</a></li>
+    <a class="svg-inline"><fa-icon   [icon]="icons" [routerLink]="cartItems>0?'cart-page':null">> </fa-icon> </a>
+    <span class="badge badge-light">{{cartItems}}</span>
+    <fa-icon class="profile" [icon]="user"></fa-icon>
+    <!-- <i class="fas fa-user-circle"></i> -->
     <li><a >{{userName | titlecase}}</a></li>    <!-- (click)="goToUserProfile()"  -->
+    <fa-icon [icon]="profile"></fa-icon>
      <!-- <li><a >{{userName | titlecase}}</a></li> -->
     <li><a routerLink="my-orders" >My Orders</a></li>
     <li><a (click)="userLogout()" >Logout</a></li>
-    <a class="svg-inline"><fa-icon   [icon]="icons" [routerLink]="cartItems>0?'cart-page':null">Cart({{cartItems}}) > </fa-icon> </a>
+
     <!-- <li><a [routerLink]="cartItems>0?'cart-page':null">Cart({{cartItems}})</a></li> -->
   </ul>
   <ul *ngSwitchCase="'seller'" >

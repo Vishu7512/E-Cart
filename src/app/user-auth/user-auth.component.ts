@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { UserService } from '../services/user.service';
 import { ProductService } from '../services/product.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-user-auth',
@@ -30,14 +31,61 @@ export class UserAuthComponent implements OnInit {
   ngOnInit(): void {
     this.user.userAuthReload();
   }
-
-  signUp() {
-    if (this.signUpForm.valid) {
-      this.user.userSignUp(this.signUpForm.value);
-    }
+  show() {
+    Swal.fire({
+      icon: 'warning',
+      text: 'All local cached records will be purged and updated with records from the server. Would you like to continue?',
+      showCancelButton: true,
+      confirmButtonText: 'Yes, refresh it!'
+    })
   }
 
+  signUp() {
+
+const Toast = Swal.mixin({
+  toast: true,
+  position: "top-end",
+  showConfirmButton: false,
+  timer: 3000,
+  timerProgressBar: true,
+  didOpen: (toast) => {
+    toast.onmouseenter = Swal.stopTimer;
+    toast.onmouseleave = Swal.resumeTimer;
+  }
+});
+Toast.fire({
+  icon: "success",
+  title: "Registered successfully"
+});
+if(this.signUpForm.valid) {
+  this.user.userSignUp(this.signUpForm.value);
+  }
+}
+
+
+
+
+
   login() {
+
+    //  sign in sweetalert
+const Toast = Swal.mixin({
+  toast: true,
+  position: "top-end",
+  showConfirmButton: false,
+  timer: 3000,
+  timerProgressBar: true,
+  didOpen: (toast) => {
+    toast.onmouseenter = Swal.stopTimer;
+    toast.onmouseleave = Swal.resumeTimer;
+  }
+});
+Toast.fire({
+  icon: "success",
+  title: "Signed in successfully"
+});
+
+    
     if (this.loginForm.valid) {
       this.user.userLogin(this.loginForm.value);
       this.user.invalidUserAuth.subscribe((result) => {

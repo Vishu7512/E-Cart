@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { jsPDF } from 'jspdf';
 import 'jspdf-autotable';
 
@@ -8,41 +9,56 @@ import 'jspdf-autotable';
   styleUrls: ['./order-summary.component.css']
 })
 export class OrderSummaryComponent implements OnInit {
-  productData: any;
-  userDetails: any;
+  productData: any[] = [];
+  userDetails: any = {};
   productQuantity: number = 1;
 
+  constructor(private router: Router) {}
+
   ngOnInit(): void {
-    // Assuming the productData and userDetails are passed via router state
-    this.productData = history.state.productData;
-    this.userDetails = history.state.userDetails;
+    const navigation = window.history.state;
+    this.productData = navigation.productData || [];
+    this.userDetails = navigation.userDetails || {};
+    this.productQuantity = navigation.productQuantity || 1;
   }
 
   downloadPdf() {
-  const doc = new jsPDF();
-  doc.setFontSize(20);
-  doc.text('Order Summary', 10, 10);
-  doc.setFontSize(12);
-  doc.text(`Product Name: ${this.productData?.name}`, 10, 30);
-  doc.text(`Price: ${this.productData?.price}`, 10, 40);
-  doc.text(`Quantity: ${this.productQuantity}`, 10, 50);
-  doc.text(`User Name: ${this.userDetails?.name}`, 10, 60);
-  doc.text(`Email: ${this.userDetails?.email}`, 10, 70);
+    const doc = new jsPDF();
+    doc.setFontSize(20);
+    doc.text('Order Summary', 10, 10);
+    doc.setFontSize(12);
 
-  const imageUrl = `https://cors-anywhere.herokuapp.com/${this.productData?.image}`;
-  const image = new Image();
-  image.crossOrigin = 'Anonymous'; // To handle CORS
-  image.src = imageUrl;
+    if (this.productData.length > 0) {
+      const product = this.productData[0];
+      doc.text(`Product Name: ${product.name}`, 10, 30);
+      doc.text(`Price: ${product.price}`, 10, 40);
+      doc.text(`Quantity: ${this.productQuantity}`, 10, 50);
 
-  image.onload = () => {
-    doc.addImage(image, 'JPEG', 10, 80, 50, 50);
-    doc.save('Order-Summary.pdf');
-  };
+      const imageUrl = `https://cors-anywhere.herokuapp.com/${product.image}`;
+      const image = new Image();
+      image.crossOrigin = 'Anonymous';
+      image.src = imageUrl;
 
-  image.onerror = () => {
-    console.error('Failed to load image.');
-    doc.save('Order-Summary.pdf'); // Save PDF without the image
-  };
-}
+      image.onload = () => {
+        doc.addImage(image, 'JPEG', 10, 100, 50, 50);
+        doc.save('Order-Summary.pdf');
+        setTimeout(() => {
+          this.router.navigate(['/my-orders']);
+        }, 2000);
+      };
 
+      image.onerror = () => {
+        console.error('Failed to load image.');
+        doc.save('Order-Summary.pdf');
+        setTimeout(() => {
+          this.router.navigate(['/my-orders']);
+        }, 2000);
+      };
+    } else {
+      doc.save('Order-Summary.pdf');
+      setTimeout(() => {
+        this.router.navigate(['/my-orders']);
+      }, 2000);
+    }
+  }
 }
