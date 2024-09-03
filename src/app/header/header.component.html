@@ -9,11 +9,11 @@
     </a>
 
   <div *ngIf="menuType !== 'seller'" class="search-container">
-    <input type="text" class="search-input" #searchInput
-           (keyup)="searchProduct($event)"
-           (blur)="hideSearch()"
-           placeholder="Search Products"
-           (keypress)="submitSearch($event, searchInput.value)">
+    <input type="text" [(ngModel)]="searchText" class="search-input" #searchInput
+       (keyup)="searchProduct($event)"
+       (blur)="hideSearch()"
+       placeholder="Search Products"
+       (keypress)="submitSearch($event, searchInput.value)">
     <button class="search-button">
       <fa-icon [icon]="icon"></fa-icon>
     </button>

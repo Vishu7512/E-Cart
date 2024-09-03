@@ -46,6 +46,7 @@ export class ProductService {
     return this.http.get<product[]>(`http://localhost:3000/products?q=${query}`);
   }
 
+  
   localAddToCart(data: product) {
     let cartData: product[] = [];
     let localCart = localStorage.getItem('localCart');

@@ -1,5 +1,5 @@
 <div *ngIf="searchResult && searchResult.length > 0; else noResults">
-  <div class="row search-item" *ngFor="let item of searchResult">
+  <div class="row search-item" *ngFor="let item of searchResult | filter:searchText">
     <div class="col-sm-3">
       <a routerLink="/details/{{item.id}}">
         <img src="{{item.image}}" alt="{{item.name}}">
@@ -17,3 +17,4 @@
 <ng-template #noResults>
   <p>No results found for your search.</p>
 </ng-template>
+

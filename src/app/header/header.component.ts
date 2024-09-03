@@ -13,6 +13,7 @@ import { faCaretDown } from '@fortawesome/free-solid-svg-icons';
 })
 export class HeaderComponent implements OnInit {
   menuType: string = 'default';
+  searchText: string = '';
   sellerName:string="";
   userName:string="";
   searchResult:undefined|product[];
@@ -22,6 +23,7 @@ export class HeaderComponent implements OnInit {
   user = faUserCircle;
   profile = faCaretDown;
   isDropdownOpen = false;
+  // searchtext:any
   constructor(private route: Router, private product:ProductService) {}
 
   ngOnInit(): void {
@@ -45,13 +47,13 @@ export class HeaderComponent implements OnInit {
         }
       }
     });
-    let cartData= localStorage.getItem('localCart');
-    if(cartData){
-      this.cartItems= JSON.parse(cartData).length
+    let cartData = localStorage.getItem('localCart');
+    if (cartData) {
+      this.cartItems = JSON.parse(cartData).length;
     }
-    this.product.cartData.subscribe((items)=>{
-      this.cartItems= items.length
-    })
+    this.product.cartData.subscribe((items) => {
+      this.cartItems = items.length;
+    });
   }
   logout(){
     localStorage.removeItem('seller');
@@ -73,17 +75,24 @@ export class HeaderComponent implements OnInit {
   }
 }
 
-  searchProduct(query:KeyboardEvent){
-    if(query){
-      const element = query.target as HTMLInputElement;
-      this.product.searchProduct(element.value).subscribe((result)=>{
-        if(result.length>5){
-          result.length=length
-        }
-        this.searchResult=result;
-      })
+searchProduct(query: KeyboardEvent): void {
+  if (query) {
+    const element = query.target as HTMLInputElement;
+    const searchText = element.value.trim(); // Get the search text
+
+    if (searchText) {
+      this.product.searchProduct(searchText).subscribe((result) => {
+       if(result.length>5){
+        result.length=5
+        this.searchResult = result;}
+      });
+    } else {
+      this.searchResult = []; // Clear the search result if input is empty
     }
   }
+}
+
+
   hideSearch(){
     this.searchResult=undefined
   }

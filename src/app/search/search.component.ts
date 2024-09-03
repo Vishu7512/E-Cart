@@ -9,8 +9,8 @@ import { ProductService } from '../services/product.service';
   styleUrls: ['./search.component.css']
 })
 export class SearchComponent implements OnInit {
-
   searchResult: product[] | undefined;
+  searchText: string = '';  // Define searchText here
 
   constructor(private activeRoute: ActivatedRoute, private product: ProductService) {}
 
@@ -18,6 +18,7 @@ export class SearchComponent implements OnInit {
     this.activeRoute.paramMap.subscribe(params => {
       const query = params.get('query');
       if (query) {
+        this.searchText = query;  // Set searchText to the query parameter
         this.product.searchProduct(query).subscribe((result) => {
           this.searchResult = result;
         });

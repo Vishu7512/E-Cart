@@ -23,6 +23,7 @@ import { CheckoutComponent } from './checkout/checkout.component';
 import { MyOrdersComponent } from './my-orders/my-orders.component';
 import { OrderSummaryComponent } from './order-summary/order-summary.component';
 import { UserProfileComponent } from './user-profile/user-profile.component';
+import { FilterPipe } from './filter.pipe';
 
 @NgModule({
   declarations: [
@@ -41,7 +42,8 @@ import { UserProfileComponent } from './user-profile/user-profile.component';
     CheckoutComponent,
     MyOrdersComponent,
     OrderSummaryComponent,
-    UserProfileComponent
+    UserProfileComponent,
+    FilterPipe
   ],
   imports: [
     BrowserModule,
