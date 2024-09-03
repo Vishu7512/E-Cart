@@ -29,6 +29,14 @@
         />
         <p class="invalid-input"><span *ngIf="signUpForm.get('password')?.invalid && signUpForm.get('password')?.touched">Password must be at least 6 characters long</span></p>
 
+        <input
+          type="password"
+          class="form-input"
+          formControlName="confirmPassword"
+          placeholder="Confirm Password"
+        />
+        <p class="invalid-input"><span *ngIf="signUpForm.hasError('mismatch') && signUpForm.get('confirmPassword')?.touched">Passwords do not match</span></p>
+
         <button [disabled]="signUpForm.invalid" class="form-button">Sign Up</button>
       </form>
       <p class="footer">Already Have Account? <a (click)="openLogin()">Click Here</a></p>
@@ -61,7 +69,7 @@
         <button [disabled]="loginForm.invalid" class="form-button">Login</button>
       </form>
       <p class="footer">Want to Create Account? <a (click)="openSignUp()">Click Here</a></p>
-      <button (click)="show()" >Click</button>
+      <!-- <button (click)="show()" >Click</button> -->
     </div>
   </div>
 </div>

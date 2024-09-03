@@ -10,29 +10,40 @@ import { Router } from '@angular/router';
 })
 export class SellerAddProductComponent implements OnInit {
   addProductMessage: string | undefined;
-  // router: any;
-  constructor(private product: ProductService , private router:Router) {}
+  selectedImage: File | null = null;
+
+  constructor(private product: ProductService, private router: Router) {}
 
   ngOnInit(): void {}
 
-  submit(data: product) {
-    this.product.addProduct(data).subscribe((result) => {
-      console.warn(result);
-      if (result) {
-        this.addProductMessage = 'Product is added successfully';
-        this.router.navigate(['/seller-home']);
-      }
-    });
-
-    setTimeout(() => {
-      this.addProductMessage = undefined;
-      this.router.navigate(['/seller-home']);
-    }, 2000);
-    
+  onFileSelected(event: any): void {
+    const file: File = event.target.files[0];
+    if (file) {
+      this.selectedImage = file;
+    }
   }
-  
 
-  validateForm() {
-    // This function is triggered on every input change to update the form validation
+  submit(data: product): void {
+    if (this.selectedImage) {
+      const formData = new FormData();
+      formData.append('name', data.name);
+      formData.append('price', data.price.toString());
+      formData.append('category', data.category);
+      formData.append('color', data.color);
+      formData.append('description', data.description);
+      formData.append('image', this.selectedImage); // Append the selected image file
+
+      this.product.addProduct(formData).subscribe((result) => {
+        if (result) {
+          this.addProductMessage = 'Product is added successfully';
+          this.router.navigate(['/seller-home']);
+        }
+      });
+
+      setTimeout(() => {
+        this.addProductMessage = undefined;
+        this.router.navigate(['/seller-home']);
+      }, 2000);
+    }
   }
 }

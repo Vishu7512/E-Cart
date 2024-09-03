@@ -73,3 +73,7 @@ a{
     background-color: #5b91a6;
     
   }
+  .carousel {
+    position: relative;
+    margin-top: 5%;
+}

@@ -17,7 +17,6 @@
           name="name"
           ngModel
           required
-          (ngModelChange)="validateForm()"
         />
       </div>
       <div class="form-group">
@@ -30,7 +29,6 @@
           name="price"
           ngModel
           required
-          (ngModelChange)="validateForm()"
         />
       </div>
       <div class="form-group">
@@ -43,7 +41,6 @@
           name="category"
           ngModel
           required
-          (ngModelChange)="validateForm()"
         />
       </div>
       <div class="form-group">
@@ -55,25 +52,21 @@
           name="description"
           ngModel
           required
-          (ngModelChange)="validateForm()"
         ></textarea>
       </div>
       <div class="form-group">
-        <label for="image">Product Image URL</label>
+        <label for="image">Product Image</label>
         <input
           id="image"
-          type="url"
+          type="file"
           class="form-input"
-          placeholder="Enter Product Image URL"
-          name="image"
-          ngModel
+          (change)="onFileSelected($event)"
           required
-          (ngModelChange)="validateForm()"
         />
       </div>
       <button
         class="form-button"
-        [disabled]="!addProduct.form.valid"
+        [disabled]="!addProduct.form.valid || !selectedImage"
         type="submit"
       >
         Add Product

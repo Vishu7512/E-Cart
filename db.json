@@ -9,11 +9,27 @@
   ],
   "products": [
     {
-      "name": "Levies Jeans",
+      "name": "Sofa-Sets ",
+      "price": "15000",
+      "category": "Furniture",
+      "description": "this is very comfertable",
+      "image": "https://media.istockphoto.com/id/1146843066/photo/modern-scandinavian-living-room-interior-3d-render.jpg?s=1024x1024&w=is&k=20&c=UCNnK-X1YSD0XG5uDNGVgWLFSWKC14vdWmnWbEcIpLA=",
+      "id": "bbe5"
+    },
+    {
+      "name": "Sofas ",
+      "price": "1500",
+      "category": "Furniture",
+      "description": "this is good product",
+      "image": "https://media.istockphoto.com/id/1357529193/photo/3d-rendering-of-a-cozy-living-room.jpg?s=1024x1024&w=is&k=20&c=2sl31dh_smuR0CCeCPQAr3it6KFJ0iCTdbggau4-_2k=",
+      "id": "5329"
+    },
+    {
+      "name": "Levis Jeans",
       "price": "5000",
       "category": "Jeans",
-      "description": "Confirmable jeans for man ",
-      "image": "https://cdn.pixabay.com/photo/2017/09/29/15/45/woman-2799490_1280.jpg",
+      "description": "Confirmable jeans for man & women ",
+      "image": "https://media.istockphoto.com/id/1179577328/photo/full-length-photo-of-guy-and-lady-advising-buy-new-product-for-low-price-indicating-fingers.jpg?s=1024x1024&w=is&k=20&c=UQu8H_PVaBVl23io7MOkhkbSsoM6j42h5wPIGENaoqg=",
       "id": "5"
     },
     {
@@ -47,14 +63,6 @@
       "category": "book ",
       "description": "asfsdafjksdgf",
       "image": "https://letsenhance.io/static/73136da51c245e80edc6ccfe44888a99/1015f/MainBefore.jpg"
-    },
-    {
-      "id": "2bb0",
-      "name": "jeans",
-      "price": 1299,
-      "category": "Dress",
-      "description": "good product",
-      "image": "https://cdn.pixabay.com/photo/2017/09/29/15/45/woman-2799490_1280.jpg"
     },
     {
       "id": "a9bc",
@@ -107,6 +115,26 @@
       "name": "anuj",
       "email": "anuj@gmail.com",
       "password": "anuj@gmail.com"
+    },
+    {
+      "id": "83f1",
+      "name": "deepak",
+      "email": "deepak@gmail.com",
+      "password": "deepak@gmail.com"
+    },
+    {
+      "id": "6726",
+      "name": "anuj",
+      "email": "anuj@gmail.com",
+      "password": "anuj@gmail.com",
+      "confirmPassword": "anuj@gmail.com"
+    },
+    {
+      "id": "b8c5",
+      "name": "nilima",
+      "email": "nilima@gmail.com",
+      "password": "nilima@gmail.com",
+      "confirmPassword": "nilima@gmail.com"
     }
   ],
   "cart": [

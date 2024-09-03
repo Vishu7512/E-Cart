@@ -19,8 +19,9 @@ export class UserAuthComponent implements OnInit {
     this.signUpForm = this.fb.group({
       name: ['', [Validators.required]],
       email: ['', [Validators.required, Validators.email]],
-      password: ['', [Validators.required, Validators.minLength(6)]]
-    });
+      password: ['', [Validators.required, Validators.minLength(6)]],
+      confirmPassword: ['', [Validators.required]]
+    }, { validator: this.passwordMatchValidator });
 
     this.loginForm = this.fb.group({
       email: ['', [Validators.required, Validators.email]],
@@ -31,61 +32,48 @@ export class UserAuthComponent implements OnInit {
   ngOnInit(): void {
     this.user.userAuthReload();
   }
-  show() {
-    Swal.fire({
-      icon: 'warning',
-      text: 'All local cached records will be purged and updated with records from the server. Would you like to continue?',
-      showCancelButton: true,
-      confirmButtonText: 'Yes, refresh it!'
-    })
+
+  passwordMatchValidator(form: FormGroup) {
+    const password = form.get('password')?.value;
+    const confirmPassword = form.get('confirmPassword')?.value;
+    return password === confirmPassword ? null : { mismatch: true };
   }
 
   signUp() {
+    if (this.signUpForm.valid) {
+      this.user.userSignUp(this.signUpForm.value).subscribe(() => {
+        Swal.fire({
+          icon: 'success',
+          title: 'Registered successfully',
+          showConfirmButton: false,
+          timer: 2000
+        });
 
-const Toast = Swal.mixin({
-  toast: true,
-  position: "top-end",
-  showConfirmButton: false,
-  timer: 3000,
-  timerProgressBar: true,
-  didOpen: (toast) => {
-    toast.onmouseenter = Swal.stopTimer;
-    toast.onmouseleave = Swal.resumeTimer;
+        // Switch to the login form after successful registration
+        this.showLogin = true;
+      }, (error) => {
+        console.error('Registration error', error);
+      });
+    }
   }
-});
-Toast.fire({
-  icon: "success",
-  title: "Registered successfully"
-});
-if(this.signUpForm.valid) {
-  this.user.userSignUp(this.signUpForm.value);
-  }
-}
-
-
-
-
 
   login() {
+    const Toast = Swal.mixin({
+      toast: true,
+      position: "top-end",
+      showConfirmButton: false,
+      timer: 3000,
+      timerProgressBar: true,
+      didOpen: (toast) => {
+        toast.onmouseenter = Swal.stopTimer;
+        toast.onmouseleave = Swal.resumeTimer;
+      }
+    });
+    Toast.fire({
+      icon: "success",
+      title: "Signed in successfully"
+    });
 
-    //  sign in sweetalert
-const Toast = Swal.mixin({
-  toast: true,
-  position: "top-end",
-  showConfirmButton: false,
-  timer: 3000,
-  timerProgressBar: true,
-  didOpen: (toast) => {
-    toast.onmouseenter = Swal.stopTimer;
-    toast.onmouseleave = Swal.resumeTimer;
-  }
-});
-Toast.fire({
-  icon: "success",
-  title: "Signed in successfully"
-});
-
-    
     if (this.loginForm.valid) {
       this.user.userLogin(this.loginForm.value);
       this.user.invalidUserAuth.subscribe((result) => {

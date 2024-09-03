@@ -46,6 +46,7 @@
   border: 1px solid #ccc;
   border-radius: 5px;
   box-sizing: border-box;
+      height: 50px;
 }
 
 textarea.form-input {
@@ -73,3 +74,4 @@ textarea.form-input {
 .form-button:hover:not([disabled]) {
   background-color: #5f9eb7;
 }
+

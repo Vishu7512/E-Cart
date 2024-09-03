@@ -65,13 +65,13 @@ export class HeaderComponent implements OnInit {
   }
 
 
-//   goToUserProfile() {
-//   const userStore = localStorage.getItem('user');
-//   if (userStore) {
-//     const userData = JSON.parse(userStore);
-//     this.route.navigate(['/user-profile'], { state: { user: userData } });
-//   }
-// }
+  UserProfile() {
+  const userStore = localStorage.getItem('user');
+  if (userStore) {
+    const userData = JSON.parse(userStore);
+    this.route.navigate(['/user-profile'], { state: { user: userData } });
+  }
+}
 
   searchProduct(query:KeyboardEvent){
     if(query){

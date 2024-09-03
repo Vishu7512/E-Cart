@@ -1,17 +1,12 @@
 
 <nav class="nav">
-  <h1><a routerLink="">E-Cart</a> </h1>
-  <!-- <div *ngIf="menuType!=='seller'" class="nav-search">
-    <input type="text"
-    #searchInput
-    (keyup)="searchProduct($event)" (blur)="hideSearch()" placeholder="Search Products" />
-    <button (click)="submitSearch(searchInput.value)" >Search</button>
-    <ul class="suggested-search" *ngIf="searchResult">
-      <li *ngFor="let item of searchResult">
-        <a (mousedown)="redirectToDetails(item.id)" >{{item.name}}</a>
-      </li>
-    </ul>
-  </div> -->
+  <!-- <img src="assets/ECarticon.png" alt="" width="40" height="34" class="d-inline-block align-text-top">
+  <h1><a routerLink="">E-Cart</a> </h1> -->
+  
+  <a class="brandicon" routerLink="">
+      <img src="assets/ECarticon.png" alt="" width="40" height="34" class="d-inline-block align-text-top">
+      E-Cart
+    </a>
 
   <div *ngIf="menuType !== 'seller'" class="search-container">
     <input type="text" class="search-input" #searchInput
@@ -54,14 +49,11 @@
       <ul class="dropdown-menu" *ngIf="isDropdownOpen">
         <li><a routerLink="my-orders">My Orders</a></li>
         <li><a (click)="userLogout()">Logout</a></li>
+        <li><a (click)="UserProfile()">profile</a></li>
       </ul>
     </div>
     
-     <!-- <li><a >{{userName | titlecase}}</a></li> -->
-    <!-- <li><a routerLink="my-orders" >My Orders</a></li>
-    <li><a (click)="userLogout()" >Logout</a></li> -->
 
-    <!-- <li><a [routerLink]="cartItems>0?'cart-page':null">Cart({{cartItems}})</a></li> -->
   </ul>
   <ul *ngSwitchCase="'seller'" >
     <li><a routerLink="seller-add-product">Add Product</a></li>
@@ -76,16 +68,3 @@
 
 
 
-<!-- <div class="container-fluid"> -->
-  <!-- <div class="background container-fluid ">
-  <nav class="navbar navbar-expand-lg bg-transparent mx-4 ">
-
-
-
-    </nav>
-    </div> -->
-
-
-    
-  
-<!-- </div> -->

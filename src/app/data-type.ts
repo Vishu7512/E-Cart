@@ -9,16 +9,16 @@ export interface login {
   password: String;
 }
 
-export interface product{
-  name:string,
-  price:number,
-  category:string,
-  color:string,
-  image:string,
-  description:string,
-  id:number,
-  quantity:undefined | number,
-  productId:undefined|number
+export interface product {
+  name: string;
+  price: number;
+  category: string;
+  color: string;
+  description: string;
+  id: number;
+  quantity: undefined | number;
+  productId: undefined | number;
+  image:any
 }
 export interface cart{
   name:string,
