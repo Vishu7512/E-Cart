@@ -1,12 +1,54 @@
+<div class="UserProfile">
+  <h1>User Dashboard</h1>
 
-<h1>user Dashboard</h1>
-<div *ngIf="userData">
-  <h2>User Profile</h2>
-  <ul>
-    <li *ngFor="let user of userData">
-      <strong>Name:</strong> {{ user.name }} <br>
-      <strong>Email:</strong> {{ user.email }} <br>
-      <strong>Address:</strong> {{ user.address }}
-    </li>
-  </ul>
+<!-- Display user profile details or edit form -->
+<div *ngIf="userData && !editMode">
+  <h2>Hello, {{ userData.name }}!</h2> <!-- Updated line -->
+
+  <!-- Profile information in table format -->
+  <table>
+    <tr>
+      <th>Name</th>
+      <td>{{ userData.name }}</td>
+    </tr>
+    <tr>
+      <th>Email</th>
+      <td>{{ userData.email }}</td>
+    </tr>
+    <tr>
+      <th>Address</th>
+      <td>{{ userData.address }}</td>
+    </tr>
+  </table>
+
+  <button class="form-button" (click)="enableEditMode()">Edit Profile</button>
+</div>
+
+</div>
+
+<!-- Edit profile form -->
+<div *ngIf="editMode">
+  <h3>Edit Profile</h3> <!-- Updated line -->
+
+  <form [formGroup]="editForm" (ngSubmit)="saveChanges()">
+    <table>
+      <tr>
+        <th><label for="name">Name:</label></th>
+        <td><input id="name" formControlName="name" type="text"></td>
+      </tr>
+      <tr>
+        <th><label for="email">Email:</label></th>
+        <td><input id="email" formControlName="email" type="email"></td>
+      </tr>
+      <tr>
+        <th><label for="address">Address:</label></th>
+        <td><input id="address" formControlName="address" type="text"></td>
+      </tr>
+    </table>
+    
+    <div class="form-actions">
+      <button class="form-button">Save Changes</button>
+      <button class="form-button" (click)="cancelEdit()">Cancel</button>
+    </div>
+  </form>
 </div>

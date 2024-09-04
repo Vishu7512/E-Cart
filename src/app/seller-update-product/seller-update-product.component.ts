@@ -3,6 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 import { product } from '../data-type';
 import { ProductService } from '../services/product.service';
 import { Router } from '@angular/router';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-seller-update-product',
@@ -30,6 +31,13 @@ export class SellerUpdateProductComponent implements OnInit {
     this.product.updateProduct(data).subscribe((result) => {
       if (result) {
         this.productMessage = 'Product has updated';
+        Swal.fire({
+  position: "top-end",
+  icon: "success",
+  title: "Product has been updated",
+  showConfirmButton: false,
+  timer: 1500
+});
       }
     });
     setTimeout(() => {

@@ -12,9 +12,19 @@ export class ProductService {
 
   constructor(private http: HttpClient) {}
 
-  addProduct(data: FormData): Observable<any> {
+  addProduct(data: any): Observable<any> {
     return this.http.post('http://localhost:3000/products', data);
   }
+
+//  private baseUrl = 'http://localhost:3000/products'; // JSON server URL
+
+//   constructor(private http: HttpClient) {}
+
+//   addProduct(productData: any): Observable<any> {
+//     return this.http.post<any>(this.baseUrl, productData); // Send as JSON
+//   }
+
+
   productList() {
     return this.http.get<product[]>('http://localhost:3000/products');
   }

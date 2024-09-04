@@ -33,12 +33,12 @@
     placeholder="Enter contact details"
     ngModel
   />
-  <button class="form-button">Order Now</button>
+  <button class="form-button" [disabled]="orderData.invalid">Order Now</button>
 </form>
 
     </div>
     <div class="col-sm-5">
-      <h3>Total Amount: {{totalPrice}}</h3>
+      <h3>Total Amount: {{totalPrice | currency:"INR" }}</h3>
       <h4>Payment Method : <b>Pay on delivery</b></h4>
     </div>
   </div>

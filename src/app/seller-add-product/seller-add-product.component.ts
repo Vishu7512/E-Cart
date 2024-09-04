@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { product } from '../data-type';
 import { ProductService } from '../services/product.service';
 import { Router } from '@angular/router';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-seller-add-product',
@@ -19,31 +20,47 @@ export class SellerAddProductComponent implements OnInit {
   onFileSelected(event: any): void {
     const file: File = event.target.files[0];
     if (file) {
-      this.selectedImage = file;
+      this.selectedImage = file; // Assign the selected file to selectedImage
     }
   }
 
   submit(data: product): void {
     if (this.selectedImage) {
-      const formData = new FormData();
-      formData.append('name', data.name);
-      formData.append('price', data.price.toString());
-      formData.append('category', data.category);
-      formData.append('color', data.color);
-      formData.append('description', data.description);
-      formData.append('image', this.selectedImage); // Append the selected image file
+      const reader = new FileReader();
+      reader.onload = () => {
+        const base64Image = reader.result as string;
 
-      this.product.addProduct(formData).subscribe((result) => {
-        if (result) {
-          this.addProductMessage = 'Product is added successfully';
+        const productData = {
+          name: data.name,
+          price: data.price,
+          category: data.category,
+          description: data.description,
+          image: base64Image // Send image as base64 string
+        };
+
+        this.product.addProduct(productData).subscribe((result) => {
+          if (result) {
+            // this.addProductMessage = 'Product is added successfully';
+              Swal.fire({
+            position: "top-end",
+            icon: "success",
+            title: "Product is added successfully",
+            showConfirmButton: false,
+            timer: 1500
+          });
+           this.router.navigate(['/seller-home']);
+          }
+        });
+
+        
+
+        setTimeout(() => {
+          this.addProductMessage = undefined;
           this.router.navigate(['/seller-home']);
-        }
-      });
+        }, 2000);
+      };
 
-      setTimeout(() => {
-        this.addProductMessage = undefined;
-        this.router.navigate(['/seller-home']);
-      }, 2000);
+      reader.readAsDataURL(this.selectedImage); // Convert image to base64
     }
   }
 }

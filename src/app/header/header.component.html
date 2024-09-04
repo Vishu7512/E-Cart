@@ -17,7 +17,7 @@
     <button class="search-button">
       <fa-icon [icon]="icon"></fa-icon>
     </button>
-  
+
     <!-- Display search suggestions -->
     <ul class="suggested-search" *ngIf="searchResult && searchResult.length > 0">
       <li *ngFor="let item of searchResult">
@@ -27,8 +27,7 @@
       </li>
     </ul>
   </div>
-  
-
+ 
  <div [ngSwitch]="menuType">
   <ul *ngSwitchCase="'default'" >
     <li><a routerLink="seller-auth">Seller</a></li>
@@ -36,7 +35,8 @@
     <li><a routerLink="user-auth">Login/Sign-up</a></li>
     <li><a href="#">Cart({{cartItems}})</a></li>
   </ul>
-  <ul *ngSwitchCase="'user'" >
+
+  <ul class="user" *ngSwitchCase="'user'" >
     <!-- <li><a routerLink="seller-auth">Seller</a></li> -->
     <li><a routerLink="">Home</a></li>
     <a class="svg-inline"><fa-icon   [icon]="icons" [routerLink]="cartItems>0?'cart-page':null">> </fa-icon> </a>
@@ -45,16 +45,15 @@
       <fa-icon class="profile" [icon]="user"></fa-icon>
       <li>{{userName | titlecase}}</li>
       <li><fa-icon [icon]="profile"></fa-icon></li>
-    
+   
       <ul class="dropdown-menu" *ngIf="isDropdownOpen">
         <li><a routerLink="my-orders">My Orders</a></li>
         <li><a (click)="userLogout()">Logout</a></li>
         <li><a (click)="UserProfile()">profile</a></li>
       </ul>
     </div>
-    
-
   </ul>
+
   <ul *ngSwitchCase="'seller'" >
     <li><a routerLink="seller-add-product">Add Product</a></li>
     <li><a routerLink="seller-home">List</a></li>

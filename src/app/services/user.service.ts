@@ -11,11 +11,17 @@ export class UserService {
   invalidUserAuth = new EventEmitter<boolean>(false);
 
   constructor(private http: HttpClient, private router: Router) { }
-private apiUrl = 'http://localhost:3000/users';
-
-  getUserData(userData: any): Observable<any> {
-    return this.http.get(this.apiUrl);
+  private apiUrl = 'http://localhost:3000/users';
+  
+getUserData(userId: number): Observable<any> {
+    return this.http.get(`${this.apiUrl}/${userId}`);
   }
+
+  updateUserData(userId: number, data: any): Observable<any> {
+    return this.http.put(`${this.apiUrl}/${userId}`, data);
+  }
+
+
   userSignUp(user: signUp): Observable<any> {
     return this.http.post('http://localhost:3000/users', user, { observe: 'response' });
   }

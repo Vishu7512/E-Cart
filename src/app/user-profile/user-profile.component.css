@@ -1,0 +1,78 @@
+/* Add this CSS to user-profile.component.css */
+.UserProfile{
+    text-align: center;
+    margin-top: 10%;
+}
+
+table {
+  width: 50%;
+  border-collapse: collapse;
+  margin-bottom: 20px;
+  margin-left: 30%;
+}
+
+th, td {
+  border: 1px solid #ddd;
+  padding: 8px;
+  text-align: left;
+}
+
+th {
+  background-color: #f2f2f2;
+}
+
+form {
+  margin-top: 20px;
+}
+
+label {
+  display: block;
+  margin-bottom: 5px;
+}
+
+input {
+  width: 100%;
+  padding: 8px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+button {
+  padding: 10px 20px;
+  margin: 10px;
+  cursor: pointer;
+}
+
+.form-actions {
+    margin: 3%;
+    text-align: center;
+}
+
+h2 {
+  margin: 3%;
+}
+h3{
+    text-align: center;
+}
+
+.form-button {
+  background-color: #1e94c3;
+  color: white;
+  padding: 10px 20px;
+  font-size: 16px;
+  border: none;
+  border-radius: 25px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  margin: 10px;
+}
+
+.form-button:hover:not([disabled]) {
+  background-color: #1e94c3;
+  transform: translateY(-2px);
+}
+
+.form-button[disabled] {
+  background-color: #cccccc;
+  cursor: not-allowed;
+}

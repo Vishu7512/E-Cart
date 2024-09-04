@@ -6,7 +6,7 @@
 <div class="col-sm-6">
     <div class="details">
         <h1>{{productData.name}}</h1>
-        <h3>Price : {{productData.price}}</h3>
+        <h3>Price : {{productData.price | currency:"INR"}}</h3>
         <h6>Category : {{productData.category}}</h6>
         <h6>Description : {{productData.description}}</h6>
       <button class="form-button" (click)="buyNow()" [disabled]="!isUserLoggedIn()">Buy Now</button>

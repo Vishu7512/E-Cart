@@ -67,13 +67,14 @@ export class HeaderComponent implements OnInit {
   }
 
 
-  UserProfile() {
-  const userStore = localStorage.getItem('user');
-  if (userStore) {
-    const userData = JSON.parse(userStore);
-    this.route.navigate(['/user-profile'], { state: { user: userData } });
+ UserProfile() {
+    const userStore = localStorage.getItem('user');
+    if (userStore) {
+      const userData = JSON.parse(userStore);
+      // Pass user data to the user profile component via state
+      this.route.navigate(['/user-profile'], { state: { user: JSON.stringify(userData) } });
+    }
   }
-}
 
 searchProduct(query: KeyboardEvent): void {
   if (query) {
