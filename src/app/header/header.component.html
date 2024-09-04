@@ -1,24 +1,19 @@
-
-<nav class="nav">
-  <!-- <img src="assets/ECarticon.png" alt="" width="40" height="34" class="d-inline-block align-text-top">
-  <h1><a routerLink="">E-Cart</a> </h1> -->
-  
+<!-- <nav class="nav">
   <a class="brandicon" routerLink="">
-      <img src="assets/ECarticon.png" alt="" width="40" height="34" class="d-inline-block align-text-top">
-      E-Cart
-    </a>
+    <img src="assets/ECarticon.png" alt="" width="40" height="34" class="d-inline-block align-text-top">
+    E-Cart
+  </a>
 
   <div *ngIf="menuType !== 'seller'" class="search-container">
     <input type="text" [(ngModel)]="searchText" class="search-input" #searchInput
-       (keyup)="searchProduct($event)"
-       (blur)="hideSearch()"
-       placeholder="Search Products"
-       (keypress)="submitSearch($event, searchInput.value)">
+      (keyup)="searchProduct($event)"
+      (blur)="hideSearch()"
+      placeholder="Search Products"
+      (keypress)="submitSearch($event, searchInput.value)">
     <button class="search-button">
       <fa-icon [icon]="icon"></fa-icon>
     </button>
 
-    <!-- Display search suggestions -->
     <ul class="suggested-search" *ngIf="searchResult && searchResult.length > 0">
       <li *ngFor="let item of searchResult">
         <a (mousedown)="redirectToDetails(item.id)">
@@ -27,43 +22,121 @@
       </li>
     </ul>
   </div>
- 
- <div [ngSwitch]="menuType">
-  <ul *ngSwitchCase="'default'" >
-    <li><a routerLink="seller-auth">Seller</a></li>
-    <li><a routerLink="">Home</a></li>
-    <li><a routerLink="user-auth">Login/Sign-up</a></li>
-    <li><a href="#">Cart({{cartItems}})</a></li>
-  </ul>
 
-  <ul class="user" *ngSwitchCase="'user'" >
-    <!-- <li><a routerLink="seller-auth">Seller</a></li> -->
-    <li><a routerLink="">Home</a></li>
-    <a class="svg-inline"><fa-icon   [icon]="icons" [routerLink]="cartItems>0?'cart-page':null">> </fa-icon> </a>
-    <span class="badge badge-light">{{cartItems}}</span>
-    <div class="dropdown" (click)="toggleDropdown()">
-      <fa-icon class="profile" [icon]="user"></fa-icon>
-      <li>{{userName | titlecase}}</li>
-      <li><fa-icon [icon]="profile"></fa-icon></li>
-   
-      <ul class="dropdown-menu" *ngIf="isDropdownOpen">
-        <li><a routerLink="my-orders">My Orders</a></li>
-        <li><a (click)="userLogout()">Logout</a></li>
-        <li><a (click)="UserProfile()">profile</a></li>
-      </ul>
-    </div>
-  </ul>
+  <div [ngSwitch]="menuType">
+    <ul *ngSwitchCase="'default'">
+      <li><a routerLink="seller-auth">Seller</a></li>
+      <li><a routerLink="">Home</a></li>
+      <li><a routerLink="user-auth">Login/Sign-up</a></li>
+      <a class="svg-inline"><fa-icon [icon]="icons" routerLink="user-auth"></fa-icon></a>
+    </ul>
 
-  <ul *ngSwitchCase="'seller'" >
-    <li><a routerLink="seller-add-product">Add Product</a></li>
-    <li><a routerLink="seller-home">List</a></li>
-    <li><a (click)="logout()">Logout</a></li>
-    <li>{{sellerName | titlecase}}</li>
-  </ul>
- </div>
+    <ul class="user" *ngSwitchCase="'user'">
+      <li><a routerLink="">Home</a></li>
+      <a class="svg-inline"><fa-icon [icon]="icons" [routerLink]="cartItems > 0 ? 'cart-page' : null"></fa-icon></a>
+      <span class="badge badge-light">{{ cartItems }}</span>
+      <div class="dropdown" (click)="toggleDropdown()">
+        <fa-icon class="profile" [icon]="user"></fa-icon>
+        <li>{{ userName | titlecase }}</li>
+        <li><fa-icon [icon]="profile"></fa-icon></li>
+
+        <ul class="dropdown-menu" *ngIf="isDropdownOpen">
+          <li><a routerLink="my-orders">My Orders</a></li>
+          <li><a (click)="userLogout()">Logout</a></li>
+          <li><a (click)="UserProfile()">Profile</a></li>
+        </ul>
+      </div>
+    </ul>
+
+    <ul class="user" *ngSwitchCase="'seller'">
+      <li><a routerLink="">Home</a></li>
+      <li><a routerLink="seller-add-product">Add Product</a></li>
+      <li><a routerLink="seller-home">List</a></li>
+      <a class="svg-inline"><fa-icon [icon]="icons" [routerLink]="cartItems > 0 ? 'cart-page' : null"></fa-icon></a>
+      <span class="badge badge-light">{{ cartItems }}</span>
+      <div class="dropdown" (click)="toggleDropdown()">
+        <fa-icon class="profile" [icon]="user"></fa-icon>
+        <li>{{ sellerName | titlecase }}</li>
+        <li><fa-icon [icon]="profile"></fa-icon></li>
+
+        <ul class="dropdown-menu" *ngIf="isDropdownOpen">
+          <li><a routerLink="my-orders">My Orders</a></li>
+          <li><a (click)="logout()">Logout</a></li>
+          <li><a routerLink="seller-profile">Profile</a></li>
+        </ul>
+      </div>
+    </ul>
+  </div>
+</nav> -->
+
+
+
+
+
+<nav class="nav">
+  <a class="brandicon" routerLink="">
+    <img src="assets/ECarticon.png" alt="" width="40" height="34" class="d-inline-block align-text-top">
+    E-Cart
+  </a>
+
+  <div *ngIf="menuType !== 'seller'" class="search-container">
+    <input type="text" [(ngModel)]="searchText" class="search-input" #searchInput
+      (keyup)="searchProduct($event)"
+      (blur)="hideSearch()"
+      placeholder="Search Products"
+      (keypress)="submitSearch($event, searchInput.value)">
+    <button class="search-button">
+      <fa-icon [icon]="icon"></fa-icon>
+    </button>
+
+    <ul class="suggested-search" *ngIf="searchResult && searchResult.length > 0">
+      <li *ngFor="let item of searchResult">
+        <a (mousedown)="redirectToDetails(item.id)">
+          {{ item.name }}
+        </a>
+      </li>
+    </ul>
+  </div>
+
+  <div [ngSwitch]="menuType">
+    <ul *ngSwitchCase="'default'">
+      <li><a routerLink="seller-auth">Seller</a></li>
+      <li><a routerLink="">Home</a></li>
+      <li><a routerLink="user-auth">Login/Sign-up</a></li>
+      <a class="svg-inline"><fa-icon [icon]="icons" routerLink="user-auth"></fa-icon></a>
+    </ul>
+
+    <ul class="user" *ngSwitchCase="'user'">
+      <li><a routerLink="">Home</a></li>
+      <a class="svg-inline"><fa-icon [icon]="icons" [routerLink]="cartItems > 0 ? 'cart-page' : null"></fa-icon></a>
+      <span class="badge badge-light">{{ cartItems }}</span>
+      <div class="dropdown" (click)="toggleDropdown()">
+        <fa-icon class="profile" [icon]="user"></fa-icon>
+        <li>{{ userName | titlecase }}</li>
+        <li><fa-icon [icon]="profile"></fa-icon></li>
+
+        <ul class="dropdown-menu" *ngIf="isDropdownOpen">
+          <li><a routerLink="my-orders">My Orders</a></li>
+          <li><a (click)="userLogout()">Logout</a></li>
+          <li><a (click)="UserProfile()">Profile</a></li>
+        </ul>
+      </div>
+    </ul>
+
+    <ul class="user" *ngSwitchCase="'seller'">
+      <li><a routerLink="">Home</a></li>
+    
+      <div class="dropdown" (click)="toggleDropdown()">
+        <fa-icon class="profile" [icon]="user"></fa-icon>
+        <li>{{ sellerName | titlecase }}</li>
+        <li><fa-icon [icon]="profile"></fa-icon></li>
+
+        <ul class="dropdown-menu" *ngIf="isDropdownOpen">
+          <li><a routerLink="seller-add-product">Add Product</a></li>
+          <li><a routerLink="seller-home">List</a></li>
+          <li><a (click)="logout()">Logout</a></li>
+        </ul>
+      </div>
+    </ul>
+  </div>
 </nav>
-
-
-
-
-
