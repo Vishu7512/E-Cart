@@ -12,6 +12,8 @@ import Swal from 'sweetalert2';
 export class SellerAddProductComponent implements OnInit {
   addProductMessage: string | undefined;
   selectedImage: File | null = null;
+    isLoading = false;
+
 
   constructor(private product: ProductService, private router: Router) {}
 
@@ -26,6 +28,7 @@ export class SellerAddProductComponent implements OnInit {
 
   submit(data: product): void {
     if (this.selectedImage) {
+       this.isLoading = true;
       const reader = new FileReader();
       reader.onload = () => {
         const base64Image = reader.result as string;
@@ -40,16 +43,17 @@ export class SellerAddProductComponent implements OnInit {
 
         this.product.addProduct(productData).subscribe((result) => {
           if (result) {
+            
             // this.addProductMessage = 'Product is added successfully';
-              Swal.fire({
-            position: "top-end",
-            icon: "success",
-            title: "Product is added successfully",
-            showConfirmButton: false,
-            timer: 1500
-          });
-           this.router.navigate(['/seller-home']);
+            Swal.fire({
+              title: "Submit",
+              text: "Your Product has been added!",
+              icon: "success"
+            });
+           this.
+           router.navigate(['/seller-home']);
           }
+            this.isLoading = false;
         });
 
         

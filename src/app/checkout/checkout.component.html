@@ -3,43 +3,40 @@
   <div class="row">
     <div class="col-sm-7">
       <h3>Add shipping address</h3>
-      <p class="message-p">{{orderMsg}}</p>
-      <form #orderData="ngForm" class="common-form" (ngSubmit)="orderNow(orderData.value)">
-  <input
-    type="text"
-    class="form-input"
-    name="name"
-    placeholder="Enter User Name"
-    ngModel
-  />
-  <input
-    type="text"
-    class="form-input"
-    name="email"
-    placeholder="Enter User Email"
-    ngModel
-  />
-  <input
-    type="text"
-    class="form-input"
-    name="address"
-    placeholder="Enter User Address"
-    ngModel
-  />
-  <input
-    type="text"
-    class="form-input"
-    name="contact"
-    placeholder="Enter contact details"
-    ngModel
-  />
-  <button class="form-button" [disabled]="orderData.invalid">Order Now</button>
-</form>
-
+      <p class="message-p">{{ orderMsg }}</p>
+      <form [formGroup]="checkoutForm" class="common-form" (ngSubmit)="orderNow()">
+        <input
+          type="text"
+          class="form-input"
+          formControlName="name"
+          placeholder="Enter User Name"
+        />
+        <input
+          type="text"
+          class="form-input"
+          formControlName="email"
+          placeholder="Enter User Email"
+        />
+        <input
+          type="text"
+          class="form-input"
+          formControlName="address"
+          placeholder="Enter User Address"
+        />
+        <input
+          type="text"
+          class="form-input"
+          formControlName="contact"
+          placeholder="Enter contact details"
+        />
+        <button class="form-button" [disabled]="checkoutForm.invalid">
+          Order Now
+        </button>
+      </form>
     </div>
     <div class="col-sm-5">
-      <h3>Total Amount: {{totalPrice | currency:"INR" }}</h3>
-      <h4>Payment Method : <b>Pay on delivery</b></h4>
+      <h3>Total Amount: {{ totalPrice | currency: 'INR' }}</h3>
+      <h4>Payment Method: <b>Pay on delivery</b></h4>
     </div>
   </div>
 </div>

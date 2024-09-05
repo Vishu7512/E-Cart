@@ -25,20 +25,24 @@
 }
 
 .form-button {
-  background-color: #1e94c3;
-  color: white;
-  padding: 10px 20px;
-  font-size: 16px;
-  border: none;
-  border-radius: 25px;
-  cursor: pointer;
-  transition: background-color 0.3s ease, transform 0.2s ease;
-  margin: 10px;
-}
+    background-color: #1e94c3;
+    color: white;
+    padding: 7px;
+    font-size: 15px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    margin: 1%;
+  }
+  
+  .form-button:hover {
+    background-color: #5b91a6;
+    
+  }
 
 .form-button:hover:not([disabled]) {
   background-color: #1e94c3;
-  transform: translateY(-2px);
+  /* transform: translateY(-2px); */
 }
 
 .form-button[disabled] {
@@ -60,7 +64,7 @@
 
 .quantity-group button:hover {
   background-color: #1e94c3;
-  transform: translateY(-2px);
+  /* transform: translateY(-2px); */
 }
 
 .quantity-group input {

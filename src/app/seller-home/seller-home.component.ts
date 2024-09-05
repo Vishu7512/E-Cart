@@ -46,7 +46,7 @@ export class SellerHomeComponent implements OnInit {
   deleteProduct(id: number) {
     const swalWithBootstrapButtons = Swal.mixin({
       customClass: {
-        confirmButton: "btn btn-success",
+        confirmButton: "btn btn-success m-2",
         cancelButton: "btn btn-danger"
       },
       buttonsStyling: false
