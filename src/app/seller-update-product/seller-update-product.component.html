@@ -2,74 +2,37 @@
   <h1>Update Product</h1>
   <p class="message-p" *ngIf="productMessage">{{ productMessage }}</p>
   <form
-    #updateProductForm="ngForm"
-    (ngSubmit)="submit(updateProductForm.value)"
-    class="update-product-form"
-  >
+    #updateProductForm="ngForm"(ngSubmit)="submit(updateProductForm.value)"  class="update-product-form">
     <div class="form-group">
       <label for="name">Product Name</label>
-      <input
-        id="name"
-        type="text"
-        class="form-input"
-        placeholder="Enter Product Name"
-        name="name"
-        [ngModel]="productData?.name"
-      />
+      <input id="name" type="text" class="form-input" placeholder="Enter Product Name" name="name" [ngModel]="productData?.name"/>
     </div>
 
     <div class="form-group">
       <label for="price">Product Price</label>
-      <input
-        id="price"
-        type="number"
-        class="form-input"
-        placeholder="Enter Product Price"
-        name="price"
-        [ngModel]="productData?.price"
-      />
+      <input id="price" type="number" class="form-input" placeholder="Enter Product Price" name="price" [ngModel]="productData?.price"/>
     </div>
 
     <div class="form-group">
       <label for="category">Product Category</label>
-      <input
-        id="category"
-        type="text"
-        class="form-input"
-        placeholder="Enter Product Category"
-        name="category"
-        [ngModel]="productData?.category"
-      />
+      <input id="category" type="text"class="form-input" placeholder="Enter Product Category" name="category" [ngModel]="productData?.category"  />
     </div>
 
     <div class="form-group">
       <label for="description">Product Description</label>
-      <textarea
-        id="description"
-        class="form-input"
-        placeholder="Enter Product Description"
-        name="description"
-        [ngModel]="productData?.description"
-      ></textarea>
+      <textarea id="description" class="form-input" placeholder="Enter Product Description" name="description"[ngModel]="productData?.description"></textarea>
     </div>
 
     <div class="form-group">
       <label for="image">Product Image URL</label>
-      <input
-        id="image"
-        type="url"
-        class="form-input"
-        placeholder="Enter Product Image URL"
-        name="image"
-        [ngModel]="productData?.image"
-      />
+      <input id="image" type="url" class="form-input" placeholder="Enter Product Image URL" name="image" [ngModel]="productData?.image"/>
     </div>
 
     <button class="form-button" type="submit">Update Product</button>
     <div *ngIf="isLoading" class="spinner-overlay">
-  <div class="spinner-border text-primary" role="status">
-    <span class="visually-hidden">Loading...</span>
-  </div>
-</div>
+      <div class="spinner-border text-primary" role="status">
+        <span class="visually-hidden">Loading...</span>
+      </div>
+    </div>
   </form>
 </div>

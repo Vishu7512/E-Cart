@@ -1,4 +1,99 @@
+
 <div class="add-product">
+  <div class="product-card">
+    <h1>Add New Product</h1>
+    <p class="message-p" *ngIf="addProductMessage">{{ addProductMessage }}</p>
+    <form [formGroup]="addProductForm" (ngSubmit)="submit()" class="add-product-form">
+      <div class="form-group">
+        <label for="name">Product Name</label>
+        <input
+          id="name"
+          type="text"
+          class="form-input"
+          placeholder="Enter Product Name"
+          formControlName="name"
+        />
+        <div *ngIf="addProductForm.get('name')?.invalid && addProductForm.get('name')?.touched">
+          Product Name is required
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="price">Product Price</label>
+        <input
+          id="price"
+          type="number"
+          class="form-input"
+          placeholder="Enter Product Price"
+          formControlName="price"
+        />
+        <div *ngIf="addProductForm.get('price')?.invalid && addProductForm.get('price')?.touched">
+          Product Price is required and should be a positive number
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="category">Product Category</label>
+        <input
+          id="category"
+          type="text"
+          class="form-input"
+          placeholder="Enter Product Category"
+          formControlName="category"
+        />
+        <div *ngIf="addProductForm.get('category')?.invalid && addProductForm.get('category')?.touched">
+          Product Category is required
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="description">Product Description</label>
+        <textarea
+          id="description"
+          class="form-input"
+          placeholder="Enter Product Description"
+          formControlName="description"
+        ></textarea>
+        <div *ngIf="addProductForm.get('description')?.invalid && addProductForm.get('description')?.touched">
+          Product Description is required
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="image">Product Image</label>
+        <input id="image" type="file" class="form-input" (change)="onFileSelected($event)" />
+        <div *ngIf="addProductForm.get('image')?.invalid && addProductForm.get('image')?.touched">
+          Product Image is required
+        </div>
+      </div>
+
+      <button
+        class="form-button"
+        [disabled]="addProductForm.invalid || !selectedImage"
+        type="submit"
+      >
+        Add Product
+      </button>
+
+      <div *ngIf="isLoading" class="spinner-overlay">
+        <div class="spinner-border text-primary" role="status">
+          <span class="visually-hidden">Loading...</span>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+<!-- <div class="add-product">
   <div class="product-card">
     <h1>Add New Product</h1>
     <p class="message-p" *ngIf="addProductMessage">{{ addProductMessage }}</p>
@@ -41,4 +136,9 @@
 
     </form>
   </div>
-</div>
+</div> -->
+
+
+
+
+

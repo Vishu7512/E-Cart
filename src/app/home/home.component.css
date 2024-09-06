@@ -77,3 +77,10 @@ a{
     position: relative;
     margin-top: 5%;
 }
+
+.product-header-image{
+    object-fit: contain;
+    width: 80%;
+    height: 600px;
+    margin-left: 10%;
+}

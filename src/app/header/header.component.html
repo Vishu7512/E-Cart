@@ -28,7 +28,7 @@
     <ul *ngSwitchCase="'default'">
       <li><a routerLink="seller-auth">Seller</a></li>
       <li><a routerLink="">Home</a></li>
-      <li><a routerLink="user-auth">Login/Sign-up</a></li>
+      <li><a routerLink="user-auth">Login</a></li>
       <a class="svg-inline"><fa-icon [icon]="icons" routerLink="user-auth"></fa-icon></a>
     </ul>
 
@@ -53,8 +53,7 @@
     </ul>
 
     <ul class="user" *ngSwitchCase="'seller'">
-      <!-- <li><a routerLink="">Home</a></li> -->
-    
+       <li> Admin</li>
       <div class="dropdown" (click)="toggleDropdown()">
         <fa-icon class="profile" [icon]="user"></fa-icon>
         <li>{{ sellerName | titlecase }}</li>

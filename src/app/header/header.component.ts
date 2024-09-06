@@ -8,6 +8,7 @@ import { faSearch } from '@fortawesome/free-solid-svg-icons';
 import { faUserCircle } from '@fortawesome/free-solid-svg-icons';
 import { faCaretDown } from '@fortawesome/free-solid-svg-icons';
 
+
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
@@ -25,6 +26,7 @@ export class HeaderComponent implements OnInit {
   user = faUserCircle;
   profile = faCaretDown;
   isDropdownOpen = false;
+
   //  isLoading = true;
 
   constructor(private route: Router, private product: ProductService) {}
