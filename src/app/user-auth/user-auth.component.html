@@ -5,36 +5,16 @@
     </div>
     <div class="card-body">
       <form [formGroup]="signUpForm" class="common-form" (ngSubmit)="signUp()">
-        <input
-          type="text"
-          class="form-input"
-          formControlName="name"
-          placeholder="Enter User Name"
-        />
-        <p class="invalid-input"><span *ngIf="signUpForm.get('name')?.invalid && signUpForm.get('name')?.touched">Please enter a valid name</span></p>
+        <input  type="text" class="form-input" formControlName="name" placeholder="Enter User Name"/>
+        <p class="invalid-input " ><span *ngIf="signUpForm.get('name')?.invalid && signUpForm.get('name')?.touched">Please enter a valid name</span></p>
 
-        <input
-          type="email"
-          class="form-input"
-          formControlName="email"
-          placeholder="Enter User Email"
-        />
+        <input type="email" class="form-input" formControlName="email" placeholder="Enter User Email"/>
         <p class="invalid-input"><span *ngIf="signUpForm.get('email')?.invalid && signUpForm.get('email')?.touched">Please enter a valid email</span></p>
 
-        <input
-          type="password"
-          class="form-input"
-          formControlName="password"
-          placeholder="Enter User Password"
-        />
+        <input type="password" class="form-input" formControlName="password" placeholder="Enter User Password"/>
         <p class="invalid-input"><span *ngIf="signUpForm.get('password')?.invalid && signUpForm.get('password')?.touched">Password must be at least 6 characters long</span></p>
 
-        <input
-          type="password"
-          class="form-input"
-          formControlName="confirmPassword"
-          placeholder="Confirm Password"
-        />
+        <input type="password" class="form-input" formControlName="confirmPassword"placeholder="Confirm Password"/>
         <p class="invalid-input"><span *ngIf="signUpForm.hasError('mismatch') && signUpForm.get('confirmPassword')?.touched">Passwords do not match</span></p>
 
         <button [disabled]="signUpForm.invalid" class="form-button">Sign Up</button>
@@ -56,7 +36,7 @@
           formControlName="email"
           placeholder="Enter User Email"
         />
-        <p class="invalid-input"><span *ngIf="loginForm.get('email')?.invalid && loginForm.get('email')?.touched">Please enter a valid email</span></p>
+        <p class="invalid-input my-1 "><span *ngIf="loginForm.get('email')?.invalid && loginForm.get('email')?.touched">Please enter a valid email</span></p>
 
         <input
           type="password"
@@ -64,7 +44,7 @@
           formControlName="password"
           placeholder="Enter User Password"
         />
-        <p class="invalid-input"><span *ngIf="loginForm.get('password')?.invalid && loginForm.get('password')?.touched">Password must be at least 6 characters long</span></p>
+        <p class="invalid-input my-1"><span *ngIf="loginForm.get('password')?.invalid && loginForm.get('password')?.touched">Password must be at least 6 characters long</span></p>
 
         <button [disabled]="loginForm.invalid" class="form-button">Login</button>
       </form>
